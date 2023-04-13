@@ -1,0 +1,41 @@
+body {
+   font-family: 'Montserrat';
+   width: auto;
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+}
+
+.container {
+   max-width: calc(1920px - 370px * 2);
+   margin-left: auto;
+   margin-right: auto;
+   padding-left: 20px;
+   padding-right: 20px;
+   display: flex;
+   flex-direction: column;
+   gap: 8px;
+
+   @media screen and (min-width: 768px) {
+      gap: 0;
+      flex-direction: row;
+   }
+
+   &.container--wrapper {
+      max-width: calc(1920px - 565px * 2);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      margin: 0 20px;
+      //gap: 12px;
+      border-radius: 14px;
+      background-color: #FFFFFF;
+      box-shadow: 0px 22.8981px 45.7963px -11.4491px rgba(52, 41, 39, 0.08);
+
+      @media screen and (min-width: 768px) {
+         flex-direction: row;
+      }
+   }
+}
