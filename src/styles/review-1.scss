@@ -223,15 +223,14 @@ body {
    .button-close {
       margin-left: 10px; 
    };
+
    .alert__item {
       text-align: center;
       flex-wrap: wrap;
       display: flex;
-
       gap: 8px;
       position: relative;
       padding-left: 16px;
-
       border: 1px solid;
       border-radius: 4px;
    };
