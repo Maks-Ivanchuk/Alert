@@ -1,19 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
-   const mainAlert = document.querySelector('.main');
-
+   const mainAlert = document.querySelector('.main__alert');
 
    mainAlert.addEventListener('click', function (event) {
       let target = event.target;
 
-      if (target.className == 'BUTTON-CLOSE') {
-         mainAlert.style.backgroundColor = "red";
-         //target.closest('.alert__item').remove();
+      console.log(target);
+      if (target.className == 'button-close__icon') {
+         target.closest('.alert__item').remove();
       } else {
          return;
       };
    });
 });
-
-
-
 
