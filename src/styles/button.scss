@@ -1,0 +1,27 @@
+.button-close {
+   padding: 8px;
+   background-image: url('/src/img/close-icon.svg');
+   background-color: $violet-bg-alert-item;
+
+   &.button-close--position {
+      position: absolute;
+      top: 13px;
+      left: 615px;
+   }
+
+   &.button-close--info {
+      background-color: $violet-bg-alert-item;
+   }
+
+   &.button-close--warning {
+      background-color: $orange-bg-alert-item;
+   }
+
+   &.button-close--danger {
+      background-color: $red-bg-alert-item;
+   }
+
+   &.button-close--success {
+      background-color: $green-bg-alert-item;
+   }
+}

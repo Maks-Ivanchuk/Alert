@@ -1,15 +1,30 @@
-// h2 {
-//    font-family: 'Dela Gothic One';
-//    font-size: 24px;
-//    line-height: 1;
-//    letter-spacing: -0.04em;
-//    color: #000;
-//    font-weight: 400;
+h1 {
+   font-weight: 600;
+   font-size: 32px;
+   line-height: 48px;
+}
 
-//    @media screen and (min-width: 768px) {
-//       font-size: 48px;
-//    }
-// }
+h2 {
+   font-weight: 600;
+   font-size: 60px;
+   line-height: 80px;
+   text-transform: capitalize;
+}
+
+   h3 {
+   font-style: normal;
+   font-weight: 600;
+   font-size: 24px;
+   line-height: 36px;
+}
+
+a {
+   color: $violet;
+   font-style: normal;
+   font-weight: 400;
+   font-size: 12px;
+   line-height: 18px;
+}
 
 // p {
 //    font-family: 'Montserrat';

@@ -5,9 +5,17 @@ body {
 }
 
 .wrapper {
+   max-width: 1000px;
+   margin: 0 auto;
+   display: flex;
+   flex-direction: column;
 }
 
 .container {
+   margin: 0 auto;
+   display: flex;
+   flex-direction: column;
+   max-width: 675px;
 }
 
 .header {
@@ -15,48 +23,66 @@ body {
 }
 
 .header__logo {
-   padding: 50px 0 50px 0;
+   padding-top: 50px;
+   padding-bottom: 50px;
    display: flex;
    flex-direction: column;
    gap: 40px;
+}
+
+.header__img {
+   max-width: 175px;
 
    img {
-      height: 32px;
-      width: 177px;
-   }
-
-   h2 {
-      font-weight: 600;
-      font-size: 60px;
-      line-height: 80px;
-      text-transform: capitalize;
+      width: 100%;
    }
 }
 
-.main {
-   background-color: $main-grey-bg;
+main {
+   background-color: $main-bg-grey;
 }
 
-.main__title {
-   height: 210px;
-   padding-top: 65px;
+.components__main {
+   display: flex;
+   flex-direction: column;
+   gap: 40px;
+   padding-top: 64px;
+   padding-bottom: 25px;
+}
 
-   .container {
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
+.components__alert {
+   border: 1px dashed $violet-border-components;
+   border-radius: 5px;
+}
+
+.alert__first {
+   padding: 16px 16px 90px 16px;
+   display: flex;
+   flex-direction: column;
+   gap: 25px;
+}
+
+.alert__item {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 10px 0 10px 0;
+   gap: 8px;
+   position: relative;
+
+   &.alert__item--info{
+      background-color: $violet-bg;
    }
 
-   h1 {
-      font-weight: 600;
-      font-size: 32px;
-      line-height: 48px;
+   &.alert__item--warning{
+      background-color: $orange-bg;
    }
 
-   h3 {
-      font-style: normal;
-      font-weight: 600;
-      font-size: 24px;
-      line-height: 36px;
+   &.alert__item--danger{
+      background-color: $red-bg;
+   }
+
+   &.alert__item--success{
+      background-color: $green-bg;
    }
 }
