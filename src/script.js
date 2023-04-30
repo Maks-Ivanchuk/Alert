@@ -1,15 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
-   const mainAlert = document.querySelector('.main__alert');
+   const body = document.querySelector('body');
 
-   mainAlert.addEventListener('click', function (event) {
+   body.addEventListener('click', function (event) {
       let target = event.target;
 
-      console.log(target);
-      if (target.className == 'button-close__icon') {
+      if (target.className == 'button-close' || target.className == 'button-close button-close--position-absolute') {
          target.closest('.alert__item').remove();
       } else {
          return;
       };
    });
 });
-
