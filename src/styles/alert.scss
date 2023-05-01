@@ -1,24 +1,17 @@
 .alert {
-   display: none;
+   display: flex;
+   flex-direction: column;
+   gap: 25px;
 
    &.alert--first {
-      display: flex;
-      flex-direction: column;
-      gap: 25px;
       padding: 16px 16px 90px 16px;
    }
 
    &.alert--second {
-      display: flex;
-      flex-direction: column;
-      gap: 25px;
       padding: 0px 16px 155px 16px;
    }
 
    &.alert--third {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
       padding: 0px 11px 16px 11px;
    }
 }
