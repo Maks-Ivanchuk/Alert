@@ -15,100 +15,172 @@
 </head>
 
 <body>
-   <header>
-      <div class="container">
-         <div class="header__logo">
-            <img src="../src/img/Logo.png" alt="logo">
-            <h1>Alert</h1>
-         </div>
-      </div>
-   </header>
-   <main>
-      <section class="main__title">
+   <div class="wrapper">
+      <header class="header">
          <div class="container">
-            <h2>Main components</h2>
-            <p>Alert</p>
-         </div>
-      </section>
-      <section class="main__alert">
-         <div class="container container--alert">
-            <div class="alert__first">
-               <div class="first__violet">
-                  <img src=".//img/icon-violet.svg" alt="icon">
-                  <p class="text">The title of the alert</p>
-                  <p class="text--violet">Other action</p>
-                  <span class="close-x">
-                     <img src="./img/icon-x.svg" alt="x">
-                  </span>
+            <div class="header__logo">
+               <div class="header__img">
+                  <img src="/src/img/Logo.png" alt="logo">
                </div>
-               <div class="first__orange">
-                  <img src=".//img/icon-orange.svg" alt="icon">
-                  <p class="text">The title of the alert</p>
-                  <p class="text--violet">Other action</p>
-                  <span class="close-x">
-                     <img src="./img/icon-x.svg" alt="x">
-                  </span>
-               </div>
-               <div class="first__red">
-                  <img src=".//img/icon-red.svg" alt="icon">
-                  <p class="text">The title of the alert</p>
-                  <p class="text--violet">Other action</p>
-                  <span class="close-x">
-                     <img src="./img/icon-x.svg" alt="x">
-                  </span>
-               </div>
-               <div class="first__green">
-                  <img src=".//img/icon-green.svg" alt="icon">
-                  <p class="text">The title of the alert</p>
-                  <p class="text text--violet">Other action</p>
-                  <span class="close-x">
-                     <img src="./img/icon-x.svg" alt="x">
-                  </span>
-               </div>
-            </div>
-            <div class="alert__second">
-               <div class="second__violet">
-                  <img src=".//img/icon-violet.svg" alt="icon">
-                  <p class="text">The title of the alert</p>
-                  <button class="button button--violet">Button</button>
-                  <span class="close-x">
-                     <img src="./img/icon-x.svg" alt="x">
-                  </span>
-               </div>
-               <div class="second__orange">
-                  <img src=".//img/icon-orange.svg" alt="icon">
-                  <p class="text">The title of the alert</p>
-                  <button class="button button--orange">Button</button>
-                  <span class="close-x">
-                     <img src="./img/icon-x.svg" alt="x">
-                  </span>
-               </div>
-               <div class="second__red">
-                  <img src=".//img/icon-red.svg" alt="icon">
-                  <p class="text">The title of the alert</p>
-                  <button class="button button--red">Button</button>
-                  <span class="close-x">
-                     <img src="./img/icon-x.svg" alt="x">
-                  </span>
-               </div>
-               <div class="second__green">
-                  <img src=".//img/icon-green.svg" alt="icon">
-                  <p class="text">The title of the alert</p>
-                  <button class="button button--green">Button</button>
-                  <span class="close-x">
-                     <img src="./img/icon-x.svg" alt="x">
-                  </span>
-               </div>
-            </div>
-            <div class="alert__third">
-               <div class="third__violet"></div>
-               <div class="third__orange"></div>
-               <div class="third__red"></div>
-               <div class="third__green"></div>
+               <h2>Alert</h2>
             </div>
          </div>
-      </section>
-   </main>
+      </header>
+      <main>
+         <section class="components">
+            <div class="container">
+               <div class="components__title">
+                  <h1>Main components</h1>
+                  <h3>Alert</h3>
+               </div>
+               <div class="components__alert">
+                  <div class="alert alert--first">
+                     <div class="alert__item alert__item--info">
+                        <div class="alert__content">
+                           <img src="/src/img/info-icon.svg" alt="info icon">
+                           <p>The title of the alert</p>
+                           <a href="#">Other action</a>
+                        </div>
+                        <button class="button-close button-close--position-absolute"></button>
+                     </div>
+                     <div class="alert__item alert__item--warning">
+                        <div class="alert__content">
+                           <img src="/src/img/warning-icon.svg" alt="info icon">
+                           <p>The title of the alert</p>
+                           <a href="#">Other action</a>
+                        </div>
+                        <button class="button-close button-close--position-absolute"></button>
+                     </div>
+                     <div class="alert__item alert__item--danger">
+                        <div class="alert__content">
+                           <img src="/src/img/danger-icon.svg" alt="info icon">
+                           <p>The title of the alert</p>
+                           <a href="#">Other action</a>
+                        </div>
+                        <button class="button-close button-close--position-absolute"></button>
+                     </div>
+                     <div class="alert__item alert__item--success">
+                        <div class="alert__content">
+                           <img src="/src/img/success-icon.svg" alt="info icon">
+                           <p>The title of the alert</p>
+                           <a href="#">Other action</a>
+                        </div>
+                        <button class="button-close button-close--position-absolute"></button>
+                     </div>
+                  </div>
+                  <div class="alert alert--second">
+                     <div class="alert__item alert__item--info alert__item--position-sp-btw alert__item--border">
+                        <div class="alert__content">
+                           <img src="/src/img/info-icon.svg" alt="info icon">
+                           <p>The title of the alert</p>
+                        </div>
+                        <div class="alert__button">
+                           <button class="button button--info">Button</button>
+                           <button class="button-close"></button>
+                        </div>
+                     </div>
+                     <div class="alert__item alert__item--warning alert__item--position-sp-btw alert__item--border">
+                        <div class="alert__content">
+                           <img src="/src/img/warning-icon.svg" alt="warning icon">
+                           <p>The title of the alert</p>
+                        </div>
+                        <div class="alert__button">
+                           <button class="button button--warning">Button</button>
+                           <button class="button-close"></button>
+                        </div>
+                     </div>
+                     <div class="alert__item alert__item--danger alert__item--position-sp-btw alert__item--border">
+                        <div class="alert__content">
+                           <img src="/src/img/danger-icon.svg" alt="danger icon">
+                           <p>The title of the alert</p>
+                        </div>
+                        <div class="alert__button">
+                           <button class="button button--danger">Button</button>
+                           <button class="button-close"></button>
+                        </div>
+                     </div>
+                     <div class="alert__item alert__item--success alert__item--position-sp-btw alert__item--border">
+                        <div class="alert__content">
+                           <img src="/src/img/success-icon.svg" alt="success icon">
+                           <p>The title of the alert</p>
+                        </div>
+                        <div class="alert__button">
+                           <button class="button button--success">Button</button>
+                           <button class="button-close"></button>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="alert alert--third">
+                     <div
+                        class="alert__item alert__item--large alert__item--info alert__item--position-sp-btw alert__item--border">
+                        <div class="alert__content alert__content--large">
+                           <div class="content__title">
+                              <img src="/src/img/info-icon.svg" alt="info icon">
+                              <p>The title of the alert</p>
+                           </div>
+                           <div class="content__alert">
+                              <p>The title of the alert</p>
+                           </div>
+                        </div>
+                        <div class="alert__button">
+                           <button class="button button--info button--large">Button</button>
+                           <button class="button-close"></button>
+                        </div>
+                     </div>
+                     <div
+                        class="alert__item alert__item--large alert__item--warning alert__item--position-sp-btw alert__item--border">
+                        <div class="alert__content alert__content--large">
+                           <div class="content__title">
+                              <img src="/src/img/warning-icon.svg" alt="warning icon">
+                              <p>The title of the alert</p>
+                           </div>
+                           <div class="content__alert">
+                              <p>The title of the alert</p>
+                           </div>
+                        </div>
+                        <div class="alert__button">
+                           <button class="button button--warning button--large">Button</button>
+                           <button class="button-close"></button>
+                        </div>
+                     </div>
+                     <div
+                        class="alert__item alert__item--large alert__item--danger alert__item--position-sp-btw alert__item--border">
+                        <div class="alert__content alert__content--large">
+                           <div class="content__title">
+                              <img src="/src/img/danger-icon.svg" alt="danger icon">
+                              <p>The title of the alert</p>
+                           </div>
+                           <div class="content__alert">
+                              <p>The title of the alert</p>
+                           </div>
+                        </div>
+                        <div class="alert__button">
+                           <button class="button button--danger button--large">Button</button>
+                           <button class="button-close"></button>
+                        </div>
+                     </div>
+                     <div
+                        class="alert__item alert__item--large alert__item--success alert__item--position-sp-btw alert__item--border">
+                        <div class="alert__content alert__content--large">
+                           <div class="content__title">
+                              <img src="/src/img/success-icon.svg" alt="success icon">
+                              <p>The title of the alert</p>
+                           </div>
+                           <div class="content__alert">
+                              <p>The title of the alert</p>
+                           </div>
+                        </div>
+                        <div class="alert__button">
+                           <button class="button button--success button--large">Button</button>
+                           <button class="button-close"></button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+      </main>
+   </div>
    <script src="script.js"></script>
 </body>
 

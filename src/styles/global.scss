@@ -1,112 +1,127 @@
+h1 {
+   font-weight: 600;
+   font-size: 32px;
+   line-height: 48px;
+}
+
 h2 {
-   font-family: 'Dela Gothic One';
+   font-weight: 600;
+   font-size: 60px;
+   line-height: 80px;
+   text-transform: capitalize;
+}
+
+   h3 {
+   font-style: normal;
+   font-weight: 600;
    font-size: 24px;
-   line-height: 1;
-   letter-spacing: -0.04em;
-   color: #000;
+   line-height: 36px;
+}
+
+a {
+   color: $violet;
+   font-style: normal;
    font-weight: 400;
-
-   @media screen and (min-width: 768px) {
-      font-size: 48px;
-   }
+   font-size: 12px;
+   line-height: 18px;
 }
 
-p {
-   font-family: 'Montserrat';
-   font-size: 14px;
-   font-weight: 400;
-   line-height: 1.4;
-   letter-spacing: 0.04em;
-   color: #757575;
+// p {
+//    font-family: 'Montserrat';
+//    font-size: 14px;
+//    font-weight: 400;
+//    line-height: 1.4;
+//    letter-spacing: 0.04em;
+//    color: #757575;
 
-   @media screen and (min-width: 768px) {
-      font-size: 18px;
-   }
-}
+//    @media screen and (min-width: 768px) {
+//       font-size: 18px;
+//    }
+// }
 
-.button {
-   appearance: none;
-   display: flex;
-   background-color: #C3DCE3;
-   padding: 12px 20px;
-   border-radius: 100px;
-   align-items: center;
-   justify-content: center;
-   font-family: 'Montserrat';
-   font-weight: 700;
-   font-size: 16px;
-   line-height: 1;
-   letter-spacing: -0.04em;
-   color: #2b788b;
-   width: fit-content;
-   transition: 0.3s ease;
+// .button {
+//    appearance: none;
+//    display: flex;
+//    background-color: #C3DCE3;
+//    padding: 12px 20px;
+//    border-radius: 100px;
+//    align-items: center;
+//    justify-content: center;
+//    font-family: 'Montserrat';
+//    font-weight: 700;
+//    font-size: 16px;
+//    line-height: 1;
+//    letter-spacing: -0.04em;
+//    color: #2b788b;
+//    width: fit-content;
+//    transition: 0.3s ease;
 
-   @media screen and (min-width: 768px) {
-      padding: 14px 22px;
-   }
+//    @media screen and (min-width: 768px) {
+//       padding: 14px 22px;
+//    }
 
-   &:hover {
-      filter: contrast(1.2);
-   }
+//    &:hover {
+//       filter: contrast(1.2);
+//    }
 
-   &.button--boots,
-   &.button--horn {
-      position: relative;
-      flex-direction: column;
-      border-radius: 14px;
-      text-align: center;
-      padding-top: 75px;
-      width: 131px;
+//    &.button--boots,
+//    &.button--horn {
+//       position: relative;
+//       flex-direction: column;
+//       border-radius: 14px;
+//       text-align: center;
+//       padding-top: 75px;
+//       width: 131px;
 
-      img {
-         width: 131px;
-         height: 107px;
-         position: absolute;
-         top: -35px;
-      }
-   }
+//       img {
+//          width: 131px;
+//          height: 107px;
+//          position: absolute;
+//          top: -35px;
+//       }
+//    }
 
-   &.button--horn {
-      width: 172px;
+//    &.button--horn {
+//       width: 172px;
 
-      img {
-         width: 92px;
-      }
-   }
+//       img {
+//          width: 92px;
+//       }
+//    }
 
-   &.button--color-pink {
-      background-color: #F2D4DC;
-      color: #945069;
-   }
+//    &.button--color-pink {
+//       background-color: #F2D4DC;
+//       color: #945069;
+//    }
 
-   &.button--color-blue {
-      background-color: #c3dce3;
-      color: #2b788b;
-   }
+//    &.button--color-blue {
+//       background-color: #c3dce3;
+//       color: #2b788b;
+//    }
 
-   &.button--cyan-dark {
-      background-color: #2B788B;
-      color: #FFFFFF;
+//    &.button--cyan-dark {
+//       background-color: #2B788B;
+//       color: #FFFFFF;
 
-      &:hover {
-         opacity: 0.8;
-      }
-   }
+//       &:hover {
+//          opacity: 0.8;
+//       }
+//    }
 
-   &.button--mini {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      padding: 4px 8px;
-      gap: 10px;
-      border-radius: 6px;
-      font-weight: 600;
-      font-size: 10px;
-      line-height: 140%;
-   }
-}
+//    &.button--mini {
+//       display: flex;
+//       flex-direction: row;
+//       align-items: center;
+//       padding: 4px 8px;
+//       gap: 10px;
+//       border-radius: 6px;
+//       font-weight: 600;
+//       font-size: 10px;
+//       line-height: 140%;
+//    }
+// }
 
-.lock {
-   overflow: hidden;
-   padding-right: 34px;
-}
+// .lock {
+//    overflow: hidden;
+//    padding-right: 34px;
+// }
