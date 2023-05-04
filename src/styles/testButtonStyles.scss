@@ -1,6 +1,7 @@
 @import './custom-reset.scss';
 @import './colors.scss';
 @import './fonts.scss';
+@import './button.scss';
 @import './global.scss';
 
 body {
@@ -22,15 +23,6 @@ body {
    margin: 0 auto;
    max-width: 3000px;
    padding: 0px 20px 0 20px;
-}
-
-.components {
-   padding-bottom: 50px;
-}
-
-.components__button {
-   border: 1px dashed $violet-border-components;
-   border-radius: 5px;
 }
 
 .header {
@@ -57,7 +49,11 @@ main {
    background-color: $main-bg-grey;
 }
 
-.components__title {
+.catalogue {
+   padding-bottom: 50px;
+}
+
+.catalogue__title {
    display: flex;
    flex-direction: column;
    gap: 40px;
@@ -65,24 +61,17 @@ main {
    padding-bottom: 25px;
 }
 
-.components__alert {
-   border: 1px dashed $violet-border-components;
+.catalogue__list-btn {
+   display: flex;
+   flex-direction: column;
+}
+
+.list-btn__button {
+   display: flex;
+   flex-direction: column;
    border-radius: 5px;
+   border: 1px dashed $violet-border-components;
+   padding: 16px;
+   gap: 85px;
 }
 
-.content__title {
-   display: flex;
-   align-items: center;
-   gap: 8px;
-   font-weight: 600;
-   font-size: 14px;
-   line-height: 22px;
-}
-
-.content__alert {
-   display: flex;
-   padding-left: 28px;
-   font-weight: 400;
-   font-size: 12px;
-   line-height: 18px;
-}
