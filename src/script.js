@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
    body.addEventListener('click', function (event) {
       let target = event.target;
-
+      debugger
       if (target.classList.contains("button-close") == true) {
          target.closest('.alert__item').remove();
          if (!body.querySelector('.alert__item')) {

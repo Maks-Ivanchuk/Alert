@@ -15,12 +15,8 @@ body {
    display: flex;
    flex-direction: column;
    margin: 0 auto;
-   max-width: 715px;
+   max-width: 680px;
    padding: 0px 20px 0 20px;
-}
-
-.components {
-   padding-bottom: 50px;
 }
 
 .header {
@@ -47,6 +43,10 @@ main {
    background-color: $main-bg-grey;
 }
 
+.components {
+   padding-bottom: 50px;
+}
+
 .components__title {
    display: flex;
    flex-direction: column;
@@ -55,24 +55,7 @@ main {
    padding-bottom: 25px;
 }
 
-.components__alert {
-   border: 1px dashed $violet-border-components;
-   border-radius: 5px;
+.components__collapse {
+
 }
 
-.content__title {
-   display: flex;
-   align-items: center;
-   gap: 8px;
-   font-weight: 600;
-   font-size: 14px;
-   line-height: 22px;
-}
-
-.content__alert {
-   display: flex;
-   padding-left: 28px;
-   font-weight: 400;
-   font-size: 12px;
-   line-height: 18px;
-}
