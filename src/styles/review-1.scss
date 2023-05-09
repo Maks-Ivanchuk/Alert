@@ -47,6 +47,12 @@ main {
    padding-bottom: 50px;
 }
 
+.components__collapse {
+   border: 1px solid #FFFFFF1F;
+   border-radius: 8px;
+   overflow: hidden;
+}
+
 .components__title {
    display: flex;
    flex-direction: column;
@@ -55,26 +61,50 @@ main {
    padding-bottom: 25px;
 }
 
-// .components__collapse {
+.collapse__accordion {
+   display: flex;
+   flex-direction: column;
+}
 
+.accordion__title {
+   display: flex;
+   justify-content: space-between;
+   border-bottom: 1px solid #FFFFFF1F;
+   padding: 16px 13px;
+   cursor: pointer;
+}
+
+.accordion__button {
+   display: flex;
+   align-items: center;
+   gap: 4px;
+   background-color: $main-bg-grey;
+   font-size: 12px;
+   line-height: 18px;
+   color: #FFFFFF8C;
+}
+
+.accordion__button-icon {
+   transition: all 0.3s;
+}
+
+// .accordion__content {
+//    display: none;
+//    background-color: $header-grey-bg;
+//    padding: 16px 13px;
+
+//    &.accordion__content--active {
+//       display: block;
+//    }
 // }
 
-//-------------------------test
-
-.collapsible {
-   background-color: #eee;
-   padding: 18px;
-   width: 100%;
-}
-
-.active, .collapsible:hover {
-   background-color: #ccc;
-}
-
-.content {
-   color: #000;
-   padding: 0 18px;
-   display: none;
+.accordion__content { //через макс висоту
+   max-height: 0px;
    overflow: hidden;
-   background-color: #f1f1f1;
+   background-color: $header-grey-bg;
+   transition: 0.3s ease-in-out;
+
+   p {
+      padding: 16px 13px;
+   }
 }

@@ -1,31 +1,29 @@
-// document.addEventListener("DOMContentLoaded", () => {
-//    const body = document.querySelector('body');
 
-//    body.addEventListener('click', function (event) {
-//       let target = event.target;
-//       debugger
-//       if (target.classList.contains("button-close") == true) {
-//          target.closest('.alert__item').remove();
-//          if (!body.querySelector('.alert__item')) {
-//             body.querySelector('.components__alert').remove();
-//          }
-//       } else {
-//          return;
-//       };
-//    });
-   // });
 document.addEventListener("DOMContentLoaded", () => {
-   let coll = document.querySelectorAll('.collapsible');
-   let i;
-   for (i = 0; i < coll.length; i++) {
-      coll[i].addEventListener("click", function (event) {
-         event.target.classList.toggle("active");
-         let content = event.target.nextElementSibling;
-         if (content.style.display == "block") {
-            content.style.display = "none";
-         } else {
-            content.style.display = "block";
+   document.querySelectorAll('.accordion__title').forEach((elem) => {
+      elem.addEventListener('click', () => {
+         
+         let content = elem.nextElementSibling;
+         
+         // if (content.classList.contains("accordion__content--active") == false) {
+         //    content.classList.add("accordion__content--active");
+         //    console.log("active");
+         // } else {
+         //    content.classList.remove("accordion__content--active");
+         //    console.log("none");
+         // }
+
+         if (content.style.maxHeight) {
+            console.log(content.closest('.collapse__accordion'));
+            document.querySelectorAll('.accordion__content').forEach((elem) => elem.style.maxHeight = null);
+            content.closest('.collapse__accordion').querySelector('.accordion__button-icon').style.transform = "rotate(0deg)";
          }
-      });
-   };
+         else {
+            document.querySelectorAll('.accordion__content').forEach((elem) => elem.style.maxHeight = null);
+            content.closest('.collapse__accordion').querySelector('.accordion__button-icon').style.transform = "rotate(180deg)";
+            content.style.maxHeight = content.scrollHeight + "px";
+         }
+
+      })
+   })
 });
