@@ -51,6 +51,7 @@ main {
    border: 1px solid #FFFFFF1F;
    border-radius: 8px;
    overflow: hidden;
+   margin-bottom: 15px;
 }
 
 .components__title {
@@ -98,7 +99,8 @@ main {
 //    }
 // }
 
-.accordion__content { //через макс висоту
+.accordion__content {
+   //через макс висоту
    max-height: 0px;
    overflow: hidden;
    background-color: $header-grey-bg;
