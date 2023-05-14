@@ -30,11 +30,22 @@
    &.button--success {
       background-color: $green;
    }
+
+   &.button--grey {
+      background-color: $button-color-grey;
+   }
+
+   &.button--modal {
+      padding: 9px 16px;
+      font-size: 14px;
+      line-height: 22px;
+   }
 }
 
 .button-close {
-   padding: 6px;
+   padding: 8px;
    background-image: url('/src/img/close-icon.svg');
+   background-repeat: no-repeat;
    background-position: center;
    background-color: #00000000;
    cursor: pointer;

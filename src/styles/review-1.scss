@@ -9,6 +9,10 @@ body {
    margin: 0 auto;
    display: flex;
    flex-direction: column;
+
+   @media screen and (min-width: 768px) {
+
+   }
 }
 
 .container {
@@ -17,6 +21,11 @@ body {
    margin: 0 auto;
    max-width: 680px;
    padding: 0px 20px 0 20px;
+   align-items: center;
+   
+   @media screen and (min-width: 768px) {
+      align-items: normal;
+   }
 }
 
 .header {
@@ -29,6 +38,11 @@ body {
    display: flex;
    flex-direction: column;
    gap: 40px;
+   align-items: center;
+   
+   @media screen and (min-width: 768px) {
+      align-items: normal;
+   }
 }
 
 .header__img {
@@ -53,4 +67,9 @@ main {
    gap: 40px;
    padding-top: 64px;
    padding-bottom: 25px;
+   align-items: center;
+   
+   @media screen and (min-width: 768px) {
+      align-items: normal;
+   }
 }
