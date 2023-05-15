@@ -10,9 +10,7 @@ body {
    display: flex;
    flex-direction: column;
 
-   @media screen and (min-width: 768px) {
-
-   }
+   @media screen and (min-width: 768px) {}
 }
 
 .container {
@@ -22,7 +20,7 @@ body {
    max-width: 680px;
    padding: 0px 20px 0 20px;
    align-items: center;
-   
+
    @media screen and (min-width: 768px) {
       align-items: normal;
    }
@@ -39,7 +37,7 @@ body {
    flex-direction: column;
    gap: 40px;
    align-items: center;
-   
+
    @media screen and (min-width: 768px) {
       align-items: normal;
    }
@@ -59,6 +57,7 @@ main {
 
 .components {
    padding-bottom: 50px;
+   height: 1500px; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 }
 
 .components__title {
@@ -68,7 +67,7 @@ main {
    padding-top: 64px;
    padding-bottom: 25px;
    align-items: center;
-   
+
    @media screen and (min-width: 768px) {
       align-items: normal;
    }

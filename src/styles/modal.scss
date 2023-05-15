@@ -18,7 +18,6 @@
    top: 0;
    width: 100%;
    height: 100%;
-   overflow: auto;
    background-color: #00000099;
 
    &.modal__container--active {
@@ -40,14 +39,10 @@
 
 .modal__header {
    display: flex;
-   justify-content: center;
+   justify-content: space-between;
    padding-bottom: 16px;
    flex-wrap: wrap;
    gap: 5px;
-
-   @media screen and (min-width: 768px) {
-      justify-content: space-between;
-   }
 }
 
 .modal__title {

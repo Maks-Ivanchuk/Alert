@@ -1,16 +1,25 @@
-document.querySelectorAll('.accordion__title').forEach((elem) => {
-   elem.addEventListener('click', () => {
+document.addEventListener("DOMContentLoaded", () => {
+   let btnOpenModal = document.querySelector('#btnOpenModal');
+   let btnCloseIcon = document.querySelector('#btnCloseIcon');
+   let btnCansel = document.querySelector('#btnCansel');
+   let btnConfirm = document.querySelector('#btnConfirm');
+   let modalContainer = document.querySelector('.modal__container');
 
-      let content = elem.nextElementSibling;
+   btnOpenModal.addEventListener('click', () => {
+      modalContainer.style.display = "flex";
+      document.body.style.overflow = "hidden";
+   });
 
-      if (content.style.maxHeight) {
-         document.querySelectorAll('.accordion__content').forEach((elem) => elem.style.maxHeight = null);
-         //content.closest('.collapse__accordion').querySelector('.accordion__button-icon').style.transform = "rotate(0deg)";
+   modalContainer.addEventListener('click', (event) => {
+      let target = event.target;
+
+      if (target == btnCloseIcon || target == btnCansel) {
+         modalContainer.style.display = "none";
+         document.body.style.overflow = "visible";
+      } else if (target == btnConfirm) {
+         alert('Error, click on the "Cancel"');
+      } else {
+         return;
       }
-      else {
-         document.querySelectorAll('.accordion__content').forEach((elem) => elem.style.maxHeight = null);
-         content.closest('.collapse__accordion').querySelector('.accordion__button-icon').style.transform = "rotate(180deg)";
-         content.style.maxHeight = content.scrollHeight + "px";
-      };
    });
 });
