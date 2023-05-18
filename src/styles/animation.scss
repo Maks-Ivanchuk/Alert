@@ -3,15 +3,22 @@
    background-color: rgb(26, 230, 202);
    margin-bottom: 25px;
    position: relative;
+   overflow: hidden;
 }
 
 .animation__element {
    position: absolute;
    bottom: 0%;
    left: 50%;
-   transform: translate(-50%, -50%);
+   transform: translate(-50%, 50%);
    height: 150px;
    width: 150px;
    border-radius: 50%;
    background-color: rgb(241, 188, 13);
+   transition: all 2s;
+
+   &.animation__element:hover,
+   :active {
+      bottom: 50%;
+   }
 }
