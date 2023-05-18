@@ -1,25 +1,46 @@
 document.addEventListener("DOMContentLoaded", () => {
-   let btnOpenModal = document.querySelector('#btnOpenModal');
-   let btnCloseIcon = document.querySelector('#btnCloseIcon');
-   let btnCansel = document.querySelector('#btnCansel');
-   let btnConfirm = document.querySelector('#btnConfirm');
-   let modalContainer = document.querySelector('.modal__container');
+   const btnOpenModal = document.querySelectorAll('[data-btnOpenModal]');
+   const btnCancelModal = document.querySelectorAll('[data-btnCancelModal]');
+   const btnConfirmModal = document.querySelectorAll('[data-btnConfirmModal]');
+   const overlay = document.querySelector('#overlay');
+   const body = document.body;
 
-   btnOpenModal.addEventListener('click', () => {
-      modalContainer.style.display = "flex";
-      document.body.style.overflow = "hidden";
+   function openModalWindows(modal) {
+      if (modal == null) return;
+      modal.classList.add("active");
+      overlay.classList.add("active");
+   };
+
+   function cloceModalWindows(modal) {
+      if (modal == null) return;
+      modal.classList.remove("active");
+      overlay.classList.remove("active");
+   };
+
+   function confirmModalWindows(confirm) {
+      if (confirm == null) return;
+      alert('To close the window, press "x" or "Cancel"');
+   };
+
+   btnOpenModal.forEach(button => {
+      button.addEventListener('click', (event) => {
+         const modal = event.target.nextElementSibling;
+         openModalWindows(modal);
+         body.style.overflow = "hidden";
+      });
    });
 
-   modalContainer.addEventListener('click', (event) => {
-      let target = event.target;
+   btnCancelModal.forEach(button => {
+      button.addEventListener('click', () => {
+         const modal = button.closest('.modal');
+         cloceModalWindows(modal);
+         body.style.overflow = "visible";
+      })
+   });
 
-      if (target == btnCloseIcon || target == btnCansel) {
-         modalContainer.style.display = "none";
-         document.body.style.overflow = "visible";
-      } else if (target == btnConfirm) {
-         alert('Error, click on the "Cancel"');
-      } else {
-         return;
-      }
+   btnConfirmModal.forEach(confirm => {
+      confirm.addEventListener('click', () => {
+         confirmModalWindows(confirm);
+      });
    });
 });
