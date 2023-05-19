@@ -43,4 +43,14 @@ document.addEventListener("DOMContentLoaded", () => {
          confirmModalWindows(confirm);
       });
    });
+
+   let animationArea = document.querySelector('.animation');
+   let animationElement = document.querySelector('.animation__element');
+
+   animationArea.addEventListener('click', (event) => {
+      let target = event.target;
+      if (target == animationElement) {
+         animationElement.classList.toggle('animation__element--active');
+      }
+   })
 });
