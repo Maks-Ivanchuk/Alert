@@ -9,8 +9,6 @@ body {
    margin: 0 auto;
    display: flex;
    flex-direction: column;
-
-   @media screen and (min-width: 768px) {}
 }
 
 .container {
@@ -19,11 +17,7 @@ body {
    margin: 0 auto;
    max-width: 680px;
    padding: 0px 20px 0 20px;
-   align-items: center;
-
-   @media screen and (min-width: 768px) {
-      align-items: normal;
-   }
+   gap: 30px;
 }
 
 .header {

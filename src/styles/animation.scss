@@ -1,41 +1,52 @@
 .animation {
-   height: 500px;
-   background-color: rgb(26, 230, 202);
-   margin-bottom: 25px;
+   height: 400px;
+   width: 100%;
+   background-color: #6ae0ff;
    position: relative;
    overflow: hidden;
 }
 
 .animation__element {
    position: absolute;
-   bottom: 50%;
+   top: 50%;
    left: 50%;
-   transform: translate(-50%, 50%);
-   transition: all 2s;
-   height: 150px;
-   width: 150px;
+   transform: translate(-50%, -50%);
+   height: 250px;
+   width: 250px;
    border-radius: 50%;
-   background-color: rgb(248, 219, 123);
+   background-color: rgb(250, 250, 250);
 
-   animation-name: example;
-   animation-duration: 4s;
-
-   // &.animation__element--active {
-   //    background-color: rgb(247, 140, 0);
-   //    bottom: -10%;
-   // }
+   &.animation__element--active {
+      animation-name: elementMovement;
+      animation-duration: 5s;
+      animation-iteration-count: 999;
+      animation-timing-function: linear;
+   }
 }
 
-@keyframes example {
+@keyframes elementMovement {
+
+
    0% {
-      bottom: 50%;
+      top: 50%;
+      background-color: rgb(250, 250, 250);
+   }
+
+   25% {
+
+      background-color: rgb(255, 166, 0);
    }
 
    50% {
-      bottom: -10%;
+      top: 135%;
+   }
+
+   75% {
+      background-color: rgb(255, 238, 0);
    }
 
    100% {
-      bottom: 50%;
+      top: 50%;
+      background-color: rgb(250, 250, 250);
    }
 }
