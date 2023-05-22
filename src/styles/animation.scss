@@ -19,7 +19,7 @@
    &.animation__element--active {
       animation-name: elementMovement;
       animation-duration: 5s;
-      animation-iteration-count: 999;
+      animation-iteration-count: infinite;
       animation-timing-function: linear;
    }
 }

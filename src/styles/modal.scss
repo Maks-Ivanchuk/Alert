@@ -25,10 +25,12 @@
    flex-direction: column;
    background-color: $main-bg-grey;
    transition: 0.2s ease-in-out;
+   visibility: hidden;
 
    &.active {
       transform: translate(-50%, -50%) scale(1);
       z-index: 100;
+      visibility: visible;
    }
 }
 
