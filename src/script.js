@@ -51,6 +51,10 @@ document.addEventListener("DOMContentLoaded", () => {
       let target = event.target;
       if (target == animationElement) {
          animationElement.classList.toggle('animation__element--active');
-      }
-   })
+      } else if (animationElement.classList.contains('animation__element--active')) {
+         animationElement.classList.toggle('animation__element--active');
+      } else {
+         return;
+      };
+   });
 });
