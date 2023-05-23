@@ -44,17 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
    });
 
-   let animationArea = document.querySelector('.animation');
-   let animationElement = document.querySelector('.animation__element');
+   // slider ---------------------------------------
 
-   animationArea.addEventListener('click', (event) => {
-      let target = event.target;
-      if (target == animationElement) {
-         animationElement.classList.toggle('animation__element--active');
-      } else if (animationElement.classList.contains('animation__element--active')) {
-         animationElement.classList.toggle('animation__element--active');
-      } else {
-         return;
-      };
-   });
+
 });
