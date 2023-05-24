@@ -1,5 +1,17 @@
 .components__slide {}
 
-.slider {}
+.slider {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 5px;
+}
 
-.slider__item {}
+.slider__item {
+   display: inline-flex;
+   width: 210px;
+   flex-wrap: wrap;
+
+   img {
+      width: 100%;
+   }
+}
