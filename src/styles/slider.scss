@@ -1,19 +1,19 @@
-.components__slide {}
+// .components__slide {}
 
-.slider {
-   display: flex;
-   flex-wrap: wrap;
-   gap: 1%;
-}
+// .slider {
+//    display: flex;
+//    flex-wrap: wrap;
+//    gap: 1%;
+// }
 
 .slider__item {
-   display: inline-flex;
-   width: 99%;
-   flex-wrap: wrap;
+   // display: inline-flex;
+   // width: 99%;
+   // flex-wrap: wrap;
 
-   @media screen and (min-width: 768px) {
-      width: 49%;
-   }
+   // @media screen and (min-width: 768px) {
+   //    width: 49%;
+   // }
 
    img {
       width: 100%;
