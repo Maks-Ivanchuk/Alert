@@ -1,6 +1,6 @@
 body {
-   background-color: #000000;
-   color: $white-color-text;
+   background-color: #fff;
+   color: #000;
    font-family: "PingFang SC";
 }
 
@@ -9,6 +9,8 @@ body {
    margin: 0 auto;
    display: flex;
    flex-direction: column;
+   background-color: $giant-bg-color;
+   height: 100%;
 }
 
 .container {
@@ -21,7 +23,7 @@ body {
 }
 
 .header {
-   background-color: $header-grey-bg;
+   //background-color: $giant-bg-color;
 }
 
 .header__logo {
@@ -46,7 +48,7 @@ body {
 }
 
 main {
-   background-color: $main-bg-grey;
+   //background-color: $giant-bg-color;
 }
 
 .components {
