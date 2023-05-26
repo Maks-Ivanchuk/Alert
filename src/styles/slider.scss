@@ -3,14 +3,22 @@
    margin-bottom: 20px;
 }
 
-.slider-second {}
+.slider-second {
+   visibility: visible;
 
-.slider__item {
+   @media screen and (max-width: 375px) {
+      visibility: hidden;
+   }
 
-   // @media screen argba(91, 202, 0, 0.226)-width: 768px) {
-   //    width: 49%;
-   // }
+   .slick-current {
+   
+      img {
+         border: 3px solid #ff000050;
+      }
+   }
 }
+
+.slider__item {}
 
 .slider-second__item {
    padding-left: 0.2%;
@@ -22,6 +30,7 @@ img {
 }
 
 .slider-second__item {
+
    img {
       border: 3px solid #00000050;
       width: 100%;

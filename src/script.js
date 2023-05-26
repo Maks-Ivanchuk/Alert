@@ -11,6 +11,14 @@ document.addEventListener("DOMContentLoaded", () => {
                arrows: false,
             }
          },
+         {
+            breakpoint: 376,
+            settings: {
+               dots: true,
+               arrows: false,
+               asNavFor: '',
+            }
+         }
       ]
    });
 
@@ -19,12 +27,10 @@ document.addEventListener("DOMContentLoaded", () => {
       slidesToShow: 3,
       slidesToScroll: 1,
       centerMode: true,
-      centerPadding: '60px',
+      centerPadding: '40px',
       focusOnSelect: true,
       asNavFor: '.slider',
       dots: false,
-      pauseOnHover: true,
-      pauseOnDotsHover: true,
       arrows: false,
       responsive: [
          {
@@ -37,8 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
          {
             breakpoint: 376,
             settings: {
-               slidesToShow: 1,
-               dots: true,
+               asNavFor: '',
             }
          },
       ]
