@@ -1,21 +1,29 @@
 // .components__slide {}
+.slider {
+   margin-bottom: 20px;
+}
 
-// .slider {
-//    display: flex;
-//    flex-wrap: wrap;
-//    gap: 1%;
-// }
+.slider-second {}
 
 .slider__item {
-   // display: inline-flex;
-   // width: 99%;
-   // flex-wrap: wrap;
 
-   // @media screen and (min-width: 768px) {
+   // @media screen argba(91, 202, 0, 0.226)-width: 768px) {
    //    width: 49%;
    // }
+}
 
+.slider-second__item {
+   padding-left: 0.2%;
+   padding-right: 0.2%;
+}
+
+img {
+   width: 100%;
+}
+
+.slider-second__item {
    img {
+      border: 3px solid #00000050;
       width: 100%;
    }
 }
