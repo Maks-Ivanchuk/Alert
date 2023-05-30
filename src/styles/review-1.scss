@@ -2,6 +2,9 @@ body {
    background-color: #000000;
    color: $white-color-text;
    font-family: "PingFang SC";
+   // display: flex;
+   // align-items: center;
+   // justify-content: center;
 }
 
 .wrapper {
@@ -10,9 +13,7 @@ body {
    display: flex;
    flex-direction: column;
 
-   @media screen and (min-width: 768px) {
-
-   }
+   @media screen and (min-width: 768px) {}
 }
 
 .container {
@@ -22,7 +23,7 @@ body {
    max-width: 680px;
    padding: 0px 20px 0 20px;
    align-items: center;
-   
+
    @media screen and (min-width: 768px) {
       align-items: normal;
    }
@@ -39,7 +40,7 @@ body {
    flex-direction: column;
    gap: 40px;
    align-items: center;
-   
+
    @media screen and (min-width: 768px) {
       align-items: normal;
    }
@@ -57,9 +58,7 @@ main {
    background-color: $main-bg-grey;
 }
 
-.components {
-   padding-bottom: 50px;
-}
+.components {}
 
 .components__title {
    display: flex;
@@ -68,7 +67,7 @@ main {
    padding-top: 64px;
    padding-bottom: 25px;
    align-items: center;
-   
+
    @media screen and (min-width: 768px) {
       align-items: normal;
    }

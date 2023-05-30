@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-   const btnOpenModal = document.querySelectorAll('[data-btnOpenModal]');
-   const btnCancelModal = document.querySelectorAll('[data-btnCancelModal]');
-   const btnConfirmModal = document.querySelectorAll('[data-btnConfirmModal]');
+   const btnOpenModal = document.querySelectorAll('[data-btnOpenModal-bootstrap]');
+   const btnCancelModal = document.querySelectorAll('[data-btnCancelModal-bootstrap]');
+   const btnConfirmModal = document.querySelectorAll('[data-btnConfirmModal-bootstrap]');
    const overlay = document.querySelector('#overlay');
    const body = document.body;
 
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
    btnCancelModal.forEach(button => {
       button.addEventListener('click', () => {
-         const modal = button.closest('.modal');
+         const modal = button.closest('.modal-bootstrap');
          cloceModalWindows(modal);
          body.style.overflow = "visible";
       })
