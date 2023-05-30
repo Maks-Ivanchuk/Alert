@@ -23,16 +23,16 @@
             <div class="container">
                <div class="components__modal-bootstrap">
                   <!-- кнопка модалки -->
-                  <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalCenter">
+                  <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalCenter">
                      Click here
                   </button>
                   <!-- модалки -->
-                  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal fade" id="modalCenter" tabindex="-1" role="dialog"
+                     aria-labelledby="ModalCenterTitle" aria-hidden="true">
                      <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content bg-warning text-primary">
+                        <div class="modal-content bg-light text-dark">
                            <div class="modal-header">
-                              <h5>Fill out the form</h5>
+                              <h3>You will be next</h3>
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                  <span aria-hidden="true">&times;</span>
                               </button>
@@ -40,22 +40,18 @@
                            <div class="modal-body">
                               <form>
                                  <div class="form-group">
-                                    <label for="exampleInputEmail1">Email address</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1"
-                                       aria-describedby="emailHelp" placeholder="Enter email">
-                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with
-                                       anyone else.</small>
+                                    <label for="inputEmail">Email</label>
+                                    <input type="email" class="form-control" id="inputEmail" placeholder="Enter email">
                                  </div>
                                  <div class="form-group">
-                                    <label for="exampleInputPassword1">Password</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1"
-                                       placeholder="Password">
+                                    <label for="inputFirstName">First name</label>
+                                    <input id="inputFirstName" type="text" class="form-control" placeholder="Enter first name">
                                  </div>
-                                 <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                 <div class="form-group">
+                                    <label class="form-label" for="phone">Phone</label>
+                                    <input type="text" id="phone" class="form-control" placeholder="Enter а phone number">
                                  </div>
-                                 <button type="submit" class="btn btn-primary">Submit</button>
+                                 <button type="submit" class="btn btn-primary btn-block">Submit</button>
                               </form>
                            </div>
                            <!-- <div class="modal-footer">
