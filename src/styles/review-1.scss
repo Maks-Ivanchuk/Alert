@@ -2,9 +2,9 @@ body {
    background-color: #000000;
    color: $white-color-text;
    font-family: "PingFang SC";
-//    display: flex;
-//    align-items: center;
-//    justify-content: center;
+   display: flex;
+   align-items: center;
+   justify-content: center;
 }
 
 .wrapper {
@@ -12,10 +12,10 @@ body {
    margin: 0 auto;
    display: flex;
    flex-direction: column;
+   align-items: center;
 
-   @media screen and (min-width: 768px) {
 
-   }
+   @media screen and (min-width: 768px) {}
 }
 
 .container {
@@ -57,10 +57,15 @@ body {
 }
 
 main {
-   background-color: $main-bg-grey;
+   //background-color: $main-bg-grey;
 }
 
-.components {}
+.components {
+   //    position: fixed;
+   //    top: 50%;
+   //    left: 50%;
+   //    transform: translate(-50%, -50%);
+}
 
 .components__title {
    display: flex;
