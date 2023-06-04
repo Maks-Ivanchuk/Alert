@@ -15,6 +15,11 @@
       padding: 6px 16px 6px 16px;
    }
 
+   &.button--lg-fs {
+      font-size: 30px;
+      line-height: 30px;
+   }
+
    &.button--info {
       background-color: $violet;
    }

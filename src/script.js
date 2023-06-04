@@ -1,60 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
-   const btnOpenModal = document.querySelectorAll('[data-btnOpenModal-bootstrap]');
-   const btnCancelModal = document.querySelectorAll('[data-btnCancelModal-bootstrap]');
-   const btnConfirmModal = document.querySelectorAll('[data-btnConfirmModal-bootstrap]');
-   const overlay = document.querySelector('#overlay');
-   const body = document.body;
+   let form = document.querySelector('#form');
 
-   function openModalWindows(modal) {
-      if (modal == null) return;
-      modal.classList.add("active");
-      overlay.classList.add("active");
-   };
+   form.addEventListener('submit', function (event) {
 
-   function cloceModalWindows(modal) {
-      if (modal == null) return;
-      modal.classList.remove("active");
-      overlay.classList.remove("active");
-   };
+      event.preventDefault();
 
-   function confirmModalWindows(confirm) {
-      if (confirm == null) return;
-      alert('To close the window, press "x" or "Cancel"');
-   };
+      let userName = document.querySelector('#userName').value;
 
-   btnOpenModal.forEach(button => {
-      button.addEventListener('click', (event) => {
-         const modal = event.target.nextElementSibling;
-         openModalWindows(modal);
-         body.style.overflow = "hidden";
-      });
-   });
 
-   btnCancelModal.forEach(button => {
-      button.addEventListener('click', () => {
-         const modal = button.closest('.modal-bootstrap');
-         cloceModalWindows(modal);
-         body.style.overflow = "visible";
+      fetch('https://jsonplaceholder.typicode.com/posts', {
+         method: 'POST',
+         body: JSON.stringify({
+            title: userName,
+         }),
+         headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+         },
       })
-   });
+         .then((response) => response.json())
+         .then((dataUser) => {
+            console.log(dataUser);
+            let results = document.querySelector('#jsonResult')
 
-   btnConfirmModal.forEach(confirm => {
-      confirm.addEventListener('click', () => {
-         confirmModalWindows(confirm);
-      });
-   });
-
-   let animationArea = document.querySelector('.animation');
-   let animationElement = document.querySelector('.animation__element');
-
-   animationArea.addEventListener('click', (event) => {
-      let target = event.target;
-      if (target == animationElement) {
-         animationElement.classList.toggle('animation__element--active');
-      } else if (animationElement.classList.contains('animation__element--active')) {
-         animationElement.classList.toggle('animation__element--active');
-      } else {
-         return;
-      };
+            results.innerHTML = `<h3>User name: ${dataUser.title}</h3>`;
+         });
    });
 });
