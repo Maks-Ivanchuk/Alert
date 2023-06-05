@@ -98,12 +98,20 @@ main {
 }
 
 #result__title {
+   display: flex;
+   gap: 5px;
+   flex-direction: column;
+   
    p {
       text-align: end;
    }
 }
 
 #result__value {
+   display: flex;
+   gap: 5px;
+   flex-direction: column;
+   
    p {
       font-weight: 700;
    }

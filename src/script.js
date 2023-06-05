@@ -9,38 +9,64 @@ document.addEventListener("DOMContentLoaded", () => {
       if (target.id == "gettingUsers") {
 
          target.classList.add('button--success');
-
+         
          fetch('https://jsonplaceholder.typicode.com/users')
 
             .then((response) => response.json())
-            .then((dataUser) => {
-               console.log(dataUser);
+            .then((dataUser) => { 
 
-               let i = 0;
+               if (dataUser != null) {
+                  let i = 0;
+                  dataUser.forEach(element => {
+                     console.log(dataUser[i]);
 
-               dataUser.forEach(element => {
-                  console.log(i);
-                  console.log(dataUser[i]);
+                     resultTitle.innerHTML +=
+                        `<p>
+                        Id:<br>
+                        Name:<br>
+                        User name:<br>
+                        Company name:<br>
+                     </p>`;
 
-                  resultTitle.innerHTML =
-                     `<p>
-                     Id:<br>
-                     Name:<br>
-                     User name:<br>
-                     Company name:<br>
-                  </p>`;
+                     resultValue.innerHTML +=
+                        `<p>
+                        ${dataUser[i].id}<br>
+                        ${dataUser[i].name}<br>
+                        ${dataUser[i].username}<br>
+                        ${dataUser[i].company.name}<br>
+                     </p>`;
 
-                  resultValue.innerHTML =
-                     `<p>
-                     ${dataUser[i].id}<br>
-                     ${dataUser[i].name}<br>
-                     ${dataUser[i].username}<br>
-                     ${dataUser[i].company.name}<br>
-                  </p>`;
-
-                  i++;
-               });
+                     i++;
+                  });
+               } else {
+                  return
+               }
             });
+            
+               // .then((dataUser) => {
+               //    dataUser.forEach(element => {
+               //       console.log(dataUser);
+               //       console.log(dataUser[i]);
+
+               //       resultTitle.innerHTML =
+               //          `<p>
+               //          Id:<br>
+               //          Name:<br>
+               //          User name:<br>
+               //          Company name:<br>
+               //       </p>`;
+
+               //       resultValue.innerHTML =
+               //          `<p>
+               //          ${dataUser[i].id}<br>
+               //          ${dataUser[i].name}<br>
+               //          ${dataUser[i].username}<br>
+               //          ${dataUser[i].company.name}<br>
+               //       </p>`;
+
+               //       i++;
+               //    });
+               // });
       }
 
       if (target.id == "gettingRequest") {
