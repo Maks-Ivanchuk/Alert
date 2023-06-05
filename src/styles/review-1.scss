@@ -23,7 +23,7 @@ body {
    flex-direction: column;
    margin: 0 auto;
    max-width: 680px;
-   padding: 0px 20px 20px 20px;
+   padding: 20px 20px 20px 20px;
    align-items: center;
 
    @media screen and (min-width: 768px) {
@@ -75,22 +75,36 @@ main {
    }
 }
 
-.components__json {}
+.components__json {
+   min-width: 350px;
+
+}
 
 .json {
    display: flex;
    flex-direction: column;
-   gap: 20px;
 }
 
-.json__title {
-   display: inline-flex;
-   align-items: center;
-   justify-content: center;
-}
-
-.json__main {
-   gap: 20px;
+#result {
    display: flex;
-   justify-content: space-between;
+   flex-direction: row;
+   padding-top: 10px;
+   padding-bottom: 10px;
+   gap: 10px;
+
+   p {
+      font-size: 18px;
+   }
+}
+
+#result__title {
+   p {
+      text-align: end;
+   }
+}
+
+#result__value {
+   p {
+      font-weight: 700;
+   }
 }
