@@ -87,9 +87,8 @@ main {
 
 #result {
    display: flex;
-   flex-direction: row;
-   padding-top: 10px;
-   padding-bottom: 10px;
+   justify-content: center;
+   flex-direction: column;
    gap: 10px;
 
    p {
@@ -97,22 +96,21 @@ main {
    }
 }
 
-#result__title {
+.userTitle {
    display: flex;
-   gap: 5px;
    flex-direction: column;
-   
-   p {
-      text-align: end;
+   justify-content: center;
+   gap: 5px;
+
+   botton {
+      font-size: 20px;
+      font-weight: 500;
    }
 }
 
-#result__value {
-   display: flex;
-   gap: 5px;
-   flex-direction: column;
-   
-   p {
-      font-weight: 700;
-   }
+#userId {
+   visibility: hidden;
+   z-index: -100;
+   display: none;
+   opacity: 0;
 }

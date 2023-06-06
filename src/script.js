@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
    let gettingUsers = document.querySelector('#gettingUsers');
-   let resultTitle = document.querySelector('#result__title');
-   let resultValue = document.querySelector('#result__value');
+   let result = document.querySelector('#result');
 
    document.body.addEventListener('click', function (event) {
       let target = event.target;
@@ -9,67 +8,53 @@ document.addEventListener("DOMContentLoaded", () => {
       if (target.id == "gettingUsers") {
 
          target.classList.add('button--success');
-         
-         fetch('https://jsonplaceholder.typicode.com/users')
 
+         fetch('https://jsonplaceholder.typicode.com/users')
             .then((response) => response.json())
-            .then((dataUser) => { 
+            .then((dataUser) => {
 
                if (dataUser != null) {
                   let i = 0;
                   dataUser.forEach(element => {
-                     console.log(dataUser[i]);
-
-                     resultTitle.innerHTML +=
-                        `<p>
-                        Id:<br>
-                        Name:<br>
-                        User name:<br>
-                        Company name:<br>
-                     </p>`;
-
-                     resultValue.innerHTML +=
-                        `<p>
-                        ${dataUser[i].id}<br>
-                        ${dataUser[i].name}<br>
-                        ${dataUser[i].username}<br>
-                        ${dataUser[i].company.name}<br>
-                     </p>`;
-
+                     result.innerHTML +=
+                        `<div class="userTitle" id="userTitleId${dataUser[i].id}">
+                        <p>Name: ${dataUser[i].name}</p>
+                        <p id="userId">${dataUser[i].id}</p>
+                        <div class="userMoreInfo"></div>
+                        <button class="button button--danger btnTargetUser">More information about user ${dataUser[i].name}</button>
+                        </div>
+                  `;
                      i++;
                   });
                } else {
                   return
                }
             });
-            
-               // .then((dataUser) => {
-               //    dataUser.forEach(element => {
-               //       console.log(dataUser);
-               //       console.log(dataUser[i]);
+      };
 
-               //       resultTitle.innerHTML =
-               //          `<p>
-               //          Id:<br>
-               //          Name:<br>
-               //          User name:<br>
-               //          Company name:<br>
-               //       </p>`;
+      if (target.classList.contains("btnTargetUser")) {
+         event.preventDefault();
+         let valueUserId = target.closest('.userTitle').querySelector('#userId').textContent;
+         target.style.display = "none";
 
-               //       resultValue.innerHTML =
-               //          `<p>
-               //          ${dataUser[i].id}<br>
-               //          ${dataUser[i].name}<br>
-               //          ${dataUser[i].username}<br>
-               //          ${dataUser[i].company.name}<br>
-               //       </p>`;
+         fetch('https://jsonplaceholder.typicode.com/users/1/todos')
+            .then((response) => response.json())
+            .then((dataUser) => {
 
-               //       i++;
-               //    });
-               // });
-      }
+               if (dataUser[valueUserId].id != null) {
+                  target.closest('.userTitle').querySelector('.userMoreInfo').innerHTML =
+                     `<p>User id: ${dataUser[valueUserId].userId}</p>
+                  <p>Id: ${dataUser[valueUserId].id}</p>
+                  <p>Title: ${dataUser[valueUserId].title}</p>
+                  <p>Completed: ${dataUser[valueUserId].completed}</p>
+                  `
 
-      if (target.id == "gettingRequest") {
+               } else {
+                  return;
+               }
+            });
+
+         target.closest('.userTitle').style.color = "red";
          target.classList.add('button--success');
       }
    });
