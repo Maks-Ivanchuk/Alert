@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-   let gettingUsers = document.querySelector('#gettingUsers');
    let result = document.querySelector('#result');
 
    fetch('https://jsonplaceholder.typicode.com/users')
@@ -7,57 +6,63 @@ document.addEventListener("DOMContentLoaded", () => {
       .then((dataUser) => {
 
          if (dataUser != null) {
-            let i = 0;
-            dataUser.forEach(element => {
+            
+            dataUser.forEach(element=>{
                result.innerHTML +=
-                  `<div class="userTitle" id="userTitleId${dataUser[i].id}">
-                  <p>Name: ${dataUser[i].name}</p>
-                  <p id="userId">${dataUser[i].id}</p>
+                  `<div class="userTitle" id="userTitleId${element.id}">
+                  <p>Name: ${element.name}</p>
+                  <p id="userId">${element.id}</p>
                   <div class="userMoreInfo"></div>
-                  <button class="button button--danger btnTargetUser">More information about user ${dataUser[i].name}</button>
-                  </div>
-            `;
-               i++;
+                  <button class="button button--danger btnTargetUser">More information about user ${element.name}</button>
+                  </div>`;
             });
          } else {
             return
          }
       });
-
-
+   
    let allBtnMoreInfo = document.querySelectorAll('.btnTargetUser');
    console.log(allBtnMoreInfo);
+});
 
-   debugger
-   allBtnMoreInfo.forEach(btnTarget => {
-      btnTarget.onclick = function () {
-         btnTarget.preventDefault();
+//    let allBtnMoreInfo = document.querySelectorAll('.btnTargetUser');
+//    console.log(allBtnMoreInfo);
 
-         let valueUserId = btnTarget.closest('.userTitle').querySelector('#userId').textContent;
 
-         btnTarget.style.display = "none";
+// allBtnMoreInfo.forEach(btnTarget => {
+//    btnTarget.onclick = function () {
+//       btnTarget.preventDefault();
 
-         fetch('https://jsonplaceholder.typicode.com/users/1/todos')
-            .then((response) => response.json())
-            .then((dataUser) => {
+//       let valueUserId = btnTarget.closest('.userTitle').querySelector('#userId').textContent;
 
-               if (dataUser[valueUserId].id != null) {
-                  btnTarget.closest('.userTitle').querySelector('.userMoreInfo').innerHTML =
-                     `<p>User id: ${dataUser[valueUserId].userId}</p>
-                  <p>Id: ${dataUser[valueUserId].id}</p>
-                  <p>Title: ${dataUser[valueUserId].title}</p>
-                  <p>Completed: ${dataUser[valueUserId].completed}</p>
-                  `
+//       btnTarget.style.display = "none";
 
-               } else {
-                  return;
-               }
-            });
+//       fetch('https://jsonplaceholder.typicode.com/users/1/todos')
+//          .then((response) => response.json())
+//          .then((dataUser) => {
 
-         btnTarget.closest('.userTitle').style.color = "red";
-         btnTarget.classList.add('button--success');
-      }
-   })
+//             if (dataUser[valueUserId].id != null) {
+//                btnTarget.closest('.userTitle').querySelector('.userMoreInfo').innerHTML =
+//                   `<p>User id: ${dataUser[valueUserId].userId}</p>
+//                   <p>Id: ${dataUser[valueUserId].id}</p>
+//                   <p>Title: ${dataUser[valueUserId].title}</p>
+//                   <p>Completed: ${dataUser[valueUserId].completed}</p>
+//                   `
+
+//             } else {
+//                return;
+//             }
+//          });
+
+//       btnTarget.closest('.userTitle').style.color = "red";
+//       btnTarget.classList.add('button--success');
+//    }
+// });
+
+
+
+
+
 
    // document.body.addEventListener('click', function (event) {
    //    let target = event.target;
@@ -89,4 +94,3 @@ document.addEventListener("DOMContentLoaded", () => {
    //    }
    // });
 
-});
