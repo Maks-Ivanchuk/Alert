@@ -6,116 +6,36 @@ document.addEventListener("DOMContentLoaded", () => {
       .then((dataUser) => {
 
          if (dataUser != null) {
-            dataUser.forEach(element => {
-               result.innerHTML +=
-                  `<div class="userTitle" id="userTitleId${element.id}">
-               <p>Name: ${element.name}</p>
-               <p id="userId">${element.id}</p>
-               <div class="userMoreInfo"></div>
-               <button class="button button--danger btnTargetUser">More information about user: ${element.name}</button>
-               </div>`;
+            dataUser.forEach(user => {
+            result.insertAdjacentHTML('beforeend', `
+               <div>ID:${user.id}; NAME:${user.name}</div>
+               <div><button data-user-id="${user.id}">FETCH TODOS</button></div>
+               <div class="todos" data-user-id="${user.id}" style="margin-bottom: 10px;"></div>
+            `);
             });
 
-            let allBtnMoreInfo = document.querySelectorAll('.btnTargetUser');
+            const buttons = document.querySelectorAll('button[data-user-id]');
 
-            allBtnMoreInfo.forEach(btnTarget => {
-               btnTarget.addEventListener('click', function (event) {
+            buttons.forEach(button => {
+               button.addEventListener('click', function (event) {
                   event.preventDefault();
+                  const userId = event.target.dataset.userId;
+                  const todosWrapper = document.querySelector(`.todos[data-user-id="${userId}"]`);
 
-                  let valueUserId = btnTarget.closest('.userTitle').querySelector('#userId').textContent;
-
-                  fetch('https://jsonplaceholder.typicode.com/users/1/todos')
-                     .then((response) => response.json())
-                     .then((dataUser) => {
-                        if (dataUser[valueUserId].id != null) {
-                           btnTarget.closest('.userTitle').querySelector('.userMoreInfo').innerHTML =
-                              `<p>User id: ${dataUser[valueUserId].userId}</p>
-                           <p>Id: ${dataUser[valueUserId].id}</p>
-                           <p>Title: ${dataUser[valueUserId].title}</p>
-                           <p>Completed: ${dataUser[valueUserId].completed}</p>
-                           `
-                        } else {
-                           return;
-                        }
-                     });
-
-                  btnTarget.classList.add('button--delete');
-               })
+               fetch(`https://jsonplaceholder.typicode.com/users/${userId}/todos`)
+               // fetch(`https://jsonplaceholder.typicode.com/todos?userId=${userId}`)
+                  .then((response) => response.json())
+                  .then((dataUser) => {
+                     dataUser.forEach(todo => { 
+                        todosWrapper.insertAdjacentHTML('beforeend', `
+                           <div>ID:${todo.id}; TITLE:${todo.title}; COMPLETED:${todo.completed}</div>
+                        `);
+                     })
+                  });
+                  })
             });
          } else {
             return
          }
       });
-
 });
-
-
-//    let allBtnMoreInfo = document.querySelectorAll('.btnTargetUser');
-//    console.log(allBtnMoreInfo);
-
-
-// allBtnMoreInfo.forEach(btnTarget => {
-//    btnTarget.onclick = function () {
-//       btnTarget.preventDefault();
-
-//       let valueUserId = btnTarget.closest('.userTitle').querySelector('#userId').textContent;
-
-//       btnTarget.style.display = "none";
-
-//       fetch('https://jsonplaceholder.typicode.com/users/1/todos')
-//          .then((response) => response.json())
-//          .then((dataUser) => {
-
-//             if (dataUser[valueUserId].id != null) {
-//                btnTarget.closest('.userTitle').querySelector('.userMoreInfo').innerHTML =
-//                   `<p>User id: ${dataUser[valueUserId].userId}</p>
-//                   <p>Id: ${dataUser[valueUserId].id}</p>
-//                   <p>Title: ${dataUser[valueUserId].title}</p>
-//                   <p>Completed: ${dataUser[valueUserId].completed}</p>
-//                   `
-
-//             } else {
-//                return;
-//             }
-//          });
-
-//       btnTarget.closest('.userTitle').style.color = "red";
-//       btnTarget.classList.add('button--success');
-//    }
-// });
-
-
-
-
-
-
-   // document.body.addEventListener('click', function (event) {
-   //    let target = event.target;
-
-   //    if (target.classList.contains("btnTargetUser")) {
-   //       event.preventDefault();
-   //       let valueUserId = target.closest('.userTitle').querySelector('#userId').textContent;
-   //       target.style.display = "none";
-
-   //       fetch('https://jsonplaceholder.typicode.com/users/1/todos')
-   //          .then((response) => response.json())
-   //          .then((dataUser) => {
-
-   //             if (dataUser[valueUserId].id != null) {
-   //                target.closest('.userTitle').querySelector('.userMoreInfo').innerHTML =
-   //                   `<p>User id: ${dataUser[valueUserId].userId}</p>
-   //                <p>Id: ${dataUser[valueUserId].id}</p>
-   //                <p>Title: ${dataUser[valueUserId].title}</p>
-   //                <p>Completed: ${dataUser[valueUserId].completed}</p>
-   //                `
-
-   //             } else {
-   //                return;
-   //             }
-   //          });
-
-   //       target.closest('.userTitle').style.color = "red";
-   //       target.classList.add('button--success');
-   //    }
-   // });
-
