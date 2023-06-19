@@ -8,9 +8,21 @@ document.addEventListener("DOMContentLoaded", () => {
          if (dataUser != null) {
             dataUser.forEach(user => {
             result.insertAdjacentHTML('beforeend', `
-               <div>ID:${user.id}; NAME:${user.name}</div>
-               <div><button data-user-id="${user.id}">FETCH TODOS</button></div>
-               <div class="todos" data-user-id="${user.id}" style="margin-bottom: 10px;"></div>
+               <tr data-user-id="${user.id}">
+                  <td>${user.id}</td>
+                  <td>${user.name}</td>
+                  <td>${user.username}</td>
+                  <td>${user.email}</td>
+                  <td>${user.address.city}</td>
+                  <td>${user.phone}</td>
+                  <td>${user.website}</td>
+                  <td>${user.company.name}</td>
+                  <td>
+                     <button class = "button button--danger">Todos</button>
+                     <button class = "button button--info">Posts</button>
+                     <button class = "button button--warning">Albums</button>
+                  </td>
+               </tr>
             `);
             });
 
@@ -23,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
                   const todosWrapper = document.querySelector(`.todos[data-user-id="${userId}"]`);
 
                fetch(`https://jsonplaceholder.typicode.com/users/${userId}/todos`)
-               // fetch(`https://jsonplaceholder.typicode.com/todos?userId=${userId}`)
                   .then((response) => response.json())
                   .then((dataUser) => {
                      dataUser.forEach(todo => { 
