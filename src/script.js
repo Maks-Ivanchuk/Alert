@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
                      </tr>
                   `);
                });
-               
+
                const buttonUserInfo = document.querySelectorAll('button[data-user-info]');
 
                buttonUserInfo.forEach(btnUserInfo => { 
