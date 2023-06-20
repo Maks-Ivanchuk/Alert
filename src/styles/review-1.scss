@@ -113,3 +113,27 @@ table, td, tr, th {
    border-width: 1px;
    border-collapse: collapse;
 }
+
+#table-wrapper {
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+}
+
+#result1 {
+   width: 100%;
+   display: none;
+   z-index: -1000;
+   opacity: 0;
+   overflow: hidden;
+   visibility: hidden;
+
+   &.result1--active {
+      
+      display: inline-table;
+      z-index: 0;
+      opacity: 1;
+      overflow: visible;
+      visibility: visible;
+   }
+}
