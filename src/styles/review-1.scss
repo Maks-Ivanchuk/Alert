@@ -120,7 +120,7 @@ table, td, tr, th {
    gap: 10px;
 }
 
-#result1 {
+.result {
    width: 100%;
    display: none;
    z-index: -1000;
@@ -128,8 +128,7 @@ table, td, tr, th {
    overflow: hidden;
    visibility: hidden;
 
-   &.result1--active {
-      
+   &.result--active {
       display: inline-table;
       z-index: 0;
       opacity: 1;
