@@ -18,15 +18,16 @@ document.addEventListener("DOMContentLoaded", () => {
    `);
    
    const tableUsers = document.querySelector('#tableUsers');
+   const tableResult1 = document.querySelector('#result1');
+   const tableResult2 = document.querySelector('#result2');
    
    fetch('https://jsonplaceholder.typicode.com/users')
-      .then((response) => response.json())
-      .then((users) => {
-
+   .then((response) => response.json())
+   .then((users) => {
       users.forEach(user => {
          tableUsers.insertAdjacentHTML('beforeend', `
             <tr>
-               <td data-user-id="${user.id}">${user.id}</td>
+               <td>${user.id}</td>
                <td>${user.name}</td>
                <td>${user.username}</td>
                <td>${user.email}</td>
@@ -46,9 +47,18 @@ document.addEventListener("DOMContentLoaded", () => {
          buttonUser.addEventListener('click', function (event) { 
             let target = event.target;
             const userId = target.dataset.userId;
-            const tableResult1 = document.querySelector('#result1');
-            
+
             tableResult1.classList.add('result--active');
+
+            tableResult1.insertAdjacentHTML('beforeend', `
+                     <tr>
+                        <th>User id</th>
+                        <th>Id</th>
+                        <th>Title</th>
+                        <th>Completed</th>
+                        <th>Action</th>
+                     </tr>
+                  `);
             
             fetch(`https://jsonplaceholder.typicode.com/users/${userId}/todos`)
             .then((response) => response.json())
@@ -56,28 +66,28 @@ document.addEventListener("DOMContentLoaded", () => {
                todosUser.forEach(todo => {
                   tableResult1.insertAdjacentHTML('beforeend', `
                      <tr>
-                        <td data-user-id="${todo.userId}">${todo.userId}</td>
+                        <td>${todo.userId}</td>
                         <td>${todo.id}</td>
                         <td>${todo.title}</td>
                         <td>${todo.completed}</td>
                         <td>
                            <button data-user-info="${userId}" class = "button-posts button button--info" style="margin: 5px;">Posts > coments</button>
-                           <button data-user-info="${userId}" class = "button-albums button button--warning" style="margin 5px;">Albums > photo</button>
+                           <button data-user-info="${userId}" class = "button-albums button button--warning" style="margin: 5px;">Albums > photo</button>
                         </td>
                      </tr>
                   `);
                });
 
-               const buttonUserInfo = document.querySelectorAll('button[data-user-info]');
+               const buttonUsersInfo = document.querySelectorAll('button[data-user-info]');
 
-               buttonUserInfo.forEach(btnUserInfo => { 
+               buttonUsersInfo.forEach(btnUserInfo => { 
                   btnUserInfo.addEventListener('click', function (event) {
                      let target = event.target;
-                     const tableResult2 = document.querySelector('#result2');
 
-                     if (target.classList.contains('button-posts')) { 
+                     if (target.classList.contains('button-posts')) {
+                        tableResult2.classList.add('result--active');
                         
-                     tableResult2.insertAdjacentHTML('beforeend', `
+                        tableResult2.insertAdjacentHTML('beforeend', `
                            <tr>
                               <th>Post Id</th>
                               <th>Id</th>
@@ -86,30 +96,29 @@ document.addEventListener("DOMContentLoaded", () => {
                               <th>Body</th>
                            </tr>
                         `);
-                        tableResult2.classList.add('result--active');
 
                         fetch(`https://jsonplaceholder.typicode.com/posts/${userId}/comments`)
-                           .then((response) => response.json())
-                           .then((comentsUser) => {
-                              comentsUser.forEach(coments => {
-                                 tableResult2.insertAdjacentHTML('beforeend', `
-                                    <tr>
-                                       <td>${coments.postId}</td>
-                                       <td>${coments.id}</td>
-                                       <td>${coments.name}</td>
-                                       <td>${coments.email}</td>
-                                       <td>${coments.body}</td>
-                                    </tr>
-                                 `);
-                              })
+                        .then((response) => response.json())
+                        .then((comentsUser) => {
+                           comentsUser.forEach(coments => {
+                              tableResult2.insertAdjacentHTML('beforeend', `
+                                 <tr>
+                                    <td>${coments.postId}</td>
+                                    <td>${coments.id}</td>
+                                    <td>${coments.name}</td>
+                                    <td>${coments.email}</td>
+                                    <td>${coments.body}</td>
+                                 </tr>
+                              `);
                            });
+                        });
                      };
-                     if (target.classList.contains('button-albums')) { 
-                                                
+                     if (target.classList.contains('button-albums')) {
                         tableResult2.classList.add('result--active');
+
                         tableResult2.insertAdjacentHTML('beforeend', `
                                     <tr>
-                                       <th>Album Id}</th>
+                                       <th>Album Id</th>
                                        <th>Id</th>
                                        <th>Title</th>
                                        <th>Url</th>
@@ -118,20 +127,20 @@ document.addEventListener("DOMContentLoaded", () => {
                                  `);
 
                         fetch(`https://jsonplaceholder.typicode.com/albums/${userId}/photos`)
-                           .then((response) => response.json())
-                           .then((albumsUser) => {
-                              albumsUser.forEach(album => {
-                                 tableResult2.insertAdjacentHTML('beforeend', `
-                                    <tr>
-                                       <td>${album.albumId}</td>
-                                       <td>${album.id}</td>
-                                       <td>${album.title}</td>
-                                       <td>${album.url}</td>
-                                       <td>${album.thumbnailUrl}</td>
-                                    </tr>
-                                 `);
-                              })
+                        .then((response) => response.json())
+                        .then((albumsUser) => {
+                           albumsUser.forEach(album => {
+                              tableResult2.insertAdjacentHTML('beforeend', `
+                                 <tr>
+                                    <td>${album.albumId}</td>
+                                    <td>${album.id}</td>
+                                    <td>${album.title}</td>
+                                    <td>${album.url}</td>
+                                    <td>${album.thumbnailUrl}</td>
+                                 </tr>
+                              `);
                            });
+                        });
                      };
                   });
                });
