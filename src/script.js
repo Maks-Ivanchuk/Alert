@@ -1,3 +1,53 @@
+document.addEventListener("DOMContentLoaded", () => {
+   const calc = document.querySelector('.calculator');
+
+   calc.addEventListener('click', function (event) {
+      let target = event.target;
+
+      const check1 = parseInt(document.querySelector('#check1').value);
+      const check2 = parseInt(document.querySelector('#check2').value);
+      let result;
+
+      if (target.tagName == 'BUTTON' && calc.querySelector('h1')) {
+         calc.querySelector('h1').remove();
+      }
+
+      if (target.id == 'plus') {
+         result = check1 + check2;
+
+         calc.insertAdjacentHTML('beforeend', `
+            <h1>${result}</h1>
+         `);
+      };
+
+            if (target.id == 'minus') {
+         result = check1 - check2;
+
+         calc.insertAdjacentHTML('beforeend', `
+            <h1>${result}</h1>
+         `);
+      };
+
+            if (target.id == 'divide') {
+         result = check1 / check2;
+
+         calc.insertAdjacentHTML('beforeend', `
+            <h1>${result}</h1>
+         `);
+      };
+
+            if (target.id == 'manifold') {
+         result = check1 + check2;
+
+         calc.insertAdjacentHTML('beforeend', `
+            <h1>${result}</h1>
+         `);
+      };
+   });
+});
+
+
+
 // document.addEventListener("DOMContentLoaded", () => {
 //    const tableWrapper = document.querySelector('#table-wrapper');
    
