@@ -2,7 +2,7 @@ body {
    background-color: #000000;
    color: $white-color-text;
    font-family: "PingFang SC";
-   //display: flex;
+   display: flex;
    align-items: center;
    justify-content: center;
 }
@@ -22,7 +22,7 @@ body {
    display: flex;
    flex-direction: column;
    margin: 0 auto;
-   padding: 20px 20px 20px 20px;
+   //padding: 20px 20px 20px 20px;
    align-items: center;
 
    @media screen and (min-width: 768px) {
