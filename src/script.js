@@ -18,7 +18,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
          calcResult.insertAdjacentHTML('afterbegin', `
             <tr>
-               <td>Result: ${sum}</td>
+               <td style = "width:15%;">Result: </td>
+               <td style = "width:45%;">${sum}</td>
+               <td style = "width:40%;">
+                  <button id="copyResult" class="button button--success">Copy result</button>
+               </td>
             </tr>
          `);
 
@@ -34,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
          calcResult.insertAdjacentHTML('afterbegin', `
             <tr>
-               <td>Result: ${sum}</td>
+               <td >Result: ${sum}</td>
             </tr>
          `);
 

@@ -84,8 +84,7 @@ main {
    flex-direction: column;
 }
 
-#result {
-}
+#result {}
 
 .userTitle {
    display: flex;
@@ -106,12 +105,16 @@ main {
    opacity: 0;
 }
 
-table, td, tr, th {
+table,
+td,
+tr,
+th {
    padding: 5px;
    border-color: #fff;
    border-style: solid;
    border-width: 1px;
    border-collapse: collapse;
+   text-align: center;
 }
 
 #table-wrapper {
