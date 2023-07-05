@@ -1,15 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
    const calc = document.querySelector('.calculator');
    const calcResult = document.querySelector('.calculator__result');
-   let countRow = 0;
    const input1 = document.querySelector('#input1');
    const input2 = document.querySelector('#input2');
+   let countRow = 0;
 
    calc.addEventListener('click', function (event) {
       let target = event.target;
       let sum;
 
-      if (target.id == 'plus') {
+      if (target.id == 'addition') {
          if (!calcResult.classList.contains('result--active')) {
             calcResult.classList.add('result--active');
          }
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
          countRow++;
       };
 
-      if (target.id == 'minus') {
+      if (target.id == 'subtraction') {
          if (!calcResult.classList.contains('result--active')) {
             calcResult.classList.add('result--active');
          }
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
          countRow++;
       };
 
-      if (target.id == 'divide') {
+      if (target.id == 'division') {
          if (!calcResult.classList.contains('result--active')) {
             calcResult.classList.add('result--active');
          }
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
          countRow++;
       };
 
-      if (target.id == 'manifold') {
+      if (target.id == 'multiplication') {
          if (!calcResult.classList.contains('result--active')) {
             calcResult.classList.add('result--active');
          }
