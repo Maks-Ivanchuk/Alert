@@ -1,47 +1,95 @@
 document.addEventListener("DOMContentLoaded", () => {
    const calc = document.querySelector('.calculator');
+   const calcResult = document.querySelector('.calculator__result');
+   let countRow = 0;
+   const input1 = document.querySelector('#input1');
+   const input2 = document.querySelector('#input2');
 
    calc.addEventListener('click', function (event) {
       let target = event.target;
-
-      const check1 = parseInt(document.querySelector('#check1').value);
-      const check2 = parseInt(document.querySelector('#check2').value);
-      let result;
-
-      if (target.tagName == 'BUTTON' && calc.querySelector('h1')) {
-         calc.querySelector('h1').remove();
-      }
+      let sum;
 
       if (target.id == 'plus') {
-         result = check1 + check2;
+         if (!calcResult.classList.contains('result--active')) {
+            calcResult.classList.add('result--active');
+         }
 
-         calc.insertAdjacentHTML('beforeend', `
-            <h1>${result}</h1>
+         sum = parseInt(input1.value) + parseInt(input2.value);
+
+         calcResult.insertAdjacentHTML('afterbegin', `
+            <tr>
+               <td>Result: ${sum}</td>
+            </tr>
          `);
+
+         countRow++;
       };
 
-            if (target.id == 'minus') {
-         result = check1 - check2;
+      if (target.id == 'minus') {
+         if (!calcResult.classList.contains('result--active')) {
+            calcResult.classList.add('result--active');
+         }
 
-         calc.insertAdjacentHTML('beforeend', `
-            <h1>${result}</h1>
+         sum = parseInt(input1.value) - parseInt(input2.value);
+
+         calcResult.insertAdjacentHTML('afterbegin', `
+            <tr>
+               <td>Result: ${sum}</td>
+            </tr>
          `);
+
+         countRow++;
       };
 
-            if (target.id == 'divide') {
-         result = check1 / check2;
+      if (target.id == 'divide') {
+         if (!calcResult.classList.contains('result--active')) {
+            calcResult.classList.add('result--active');
+         }
 
-         calc.insertAdjacentHTML('beforeend', `
-            <h1>${result}</h1>
+         sum = parseInt(input1.value) / parseInt(input2.value);
+
+         calcResult.insertAdjacentHTML('afterbegin', `
+            <tr>
+               <td>Result: ${sum}</td>
+            </tr>
          `);
+
+         countRow++;
       };
 
-            if (target.id == 'manifold') {
-         result = check1 + check2;
+      if (target.id == 'manifold') {
+         if (!calcResult.classList.contains('result--active')) {
+            calcResult.classList.add('result--active');
+         }
 
-         calc.insertAdjacentHTML('beforeend', `
-            <h1>${result}</h1>
+         sum = parseInt(input1.value) * parseInt(input2.value);
+
+         calcResult.insertAdjacentHTML('afterbegin', `
+            <tr>
+               <td>Result: ${sum}</td>
+            </tr>
          `);
+
+         countRow++;
+      };
+
+      if (target.id == 'clean') {
+         input1.value = '';
+         input2.value = '';
+      };
+
+      if (target.id == 'cleanResult') {
+         calcResult.classList.remove('result--active');
+         for (let i = 0; i < countRow; i++) {
+            calcResult.deleteRow(0);
+         };
+
+         countRow = 0;
+      };
+
+      if (target.tagName == 'BUTTON' && target.id != 'cleanResult') {
+         input1.value = '';
+         input2.value = '';
       };
    });
 });
@@ -50,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // document.addEventListener("DOMContentLoaded", () => {
 //    const tableWrapper = document.querySelector('#table-wrapper');
-   
+
 //    tableWrapper.insertAdjacentHTML('afterbegin', `
 //       <table id="tableUsers" width = "100%">
 //          <tr>
@@ -69,9 +117,9 @@ document.addEventListener("DOMContentLoaded", () => {
 //          </tr>
 //       </table>
 //    `);
-   
+
 //    const tableUsers = document.querySelector('#tableUsers');
-   
+
 //    fetch('https://jsonplaceholder.typicode.com/users')
 //    .then((response) => response.json())
 //    .then((users) => {
@@ -95,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
 //          `);
 //       });
 //       const buttonsUsers = document.querySelectorAll('button[data-user-id]');
-   
+
 //       buttonsUsers.forEach(buttonUser => {
 //          buttonUser.addEventListener('click', function (event) {
 //             let target = event.target;
@@ -120,7 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
 //                         </tr>
 //                      </table>
 //                   `);
-//                } else { 
+//                } else {
 //                   document.querySelector('#result1').remove();
 
 //                   tableWrapper.insertAdjacentHTML('beforeend', `
@@ -172,7 +220,7 @@ document.addEventListener("DOMContentLoaded", () => {
 //                         </tr>
 //                      </table>
 //                   `);
-//                } else { 
+//                } else {
 //                   document.querySelector('#result1').remove();
 
 //                   tableWrapper.insertAdjacentHTML('beforeend', `
@@ -209,7 +257,7 @@ document.addEventListener("DOMContentLoaded", () => {
 //                         </tr>
 //                      `);
 //                   });
-                  
+
 //                   const btnsComments = document.querySelectorAll('button[data-posts-id]');
 
 //                   btnsComments.forEach(btnComment => {
@@ -229,7 +277,7 @@ document.addEventListener("DOMContentLoaded", () => {
 //                                  </tr>
 //                               </table>
 //                            `);
-//                         } else { 
+//                         } else {
 //                            return;
 //                         };
 
@@ -270,9 +318,9 @@ document.addEventListener("DOMContentLoaded", () => {
 //                         </tr>
 //                      </table>
 //                   `);
-//                } else { 
+//                } else {
 //                   document.querySelector('#result1').remove();
-                  
+
 //                   tableWrapper.insertAdjacentHTML('beforeend', `
 //                      <table id = "result1">
 //                         <tr>
@@ -325,7 +373,7 @@ document.addEventListener("DOMContentLoaded", () => {
 //                                  </tr>
 //                               </table>
 //                            `);
-//                         } else { 
+//                         } else {
 //                            return;
 //                         };
 
