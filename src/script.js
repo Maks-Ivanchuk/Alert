@@ -101,13 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
          let resTest = Number(target.value);
          console.log(resTest);
-         navigator.clipboard.writeText(resTest)
-            .then(() => {
-               console.log('Text copied to clipboard');
-            })
-            .catch(err => {
-               console.error('Error in copying text: ', err);
-            });
+         navigator.clipboard.writeText(resTest);
       };
    });
 });
