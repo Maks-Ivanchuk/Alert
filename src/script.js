@@ -12,9 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
       if (target.id == 'addition') {
          if (!calcResult.classList.contains('result--active')) {
             calcResult.classList.add('result--active');
-         }
+         };
 
-         sum = parseInt(input1.value) + parseInt(input2.value);
+         sum = Number(input1.value) + Number(input2.value);
 
          calcResult.insertAdjacentHTML('afterbegin', `
             <tr>
@@ -29,13 +29,14 @@ document.addEventListener("DOMContentLoaded", () => {
       if (target.id == 'subtraction') {
          if (!calcResult.classList.contains('result--active')) {
             calcResult.classList.add('result--active');
-         }
+         };
 
-         sum = parseInt(input1.value) - parseInt(input2.value);
+         sum = Number(input1.value) - Number(input2.value);
 
          calcResult.insertAdjacentHTML('afterbegin', `
             <tr>
-               <td >Result: ${sum}</td>
+               <td style = "width:15%;">Result: </td>
+               <td id="targetCopyResult";>${sum}</td>
             </tr>
          `);
 
@@ -45,13 +46,14 @@ document.addEventListener("DOMContentLoaded", () => {
       if (target.id == 'division') {
          if (!calcResult.classList.contains('result--active')) {
             calcResult.classList.add('result--active');
-         }
+         };
 
-         sum = parseInt(input1.value) / parseInt(input2.value);
+         sum = Number(input1.value) / Number(input2.value);
 
          calcResult.insertAdjacentHTML('afterbegin', `
             <tr>
-               <td>Result: ${sum}</td>
+               <td style = "width:15%;">Result: </td>
+               <td id="targetCopyResult";>${sum}</td>
             </tr>
          `);
 
@@ -61,22 +63,18 @@ document.addEventListener("DOMContentLoaded", () => {
       if (target.id == 'multiplication') {
          if (!calcResult.classList.contains('result--active')) {
             calcResult.classList.add('result--active');
-         }
+         };
 
-         sum = parseInt(input1.value) * parseInt(input2.value);
+         sum = Number(input1.value) * Number(input2.value);
 
          calcResult.insertAdjacentHTML('afterbegin', `
             <tr>
-               <td>Result: ${sum}</td>
+               <td style = "width:15%;">Result: </td>
+               <td id="targetCopyResult";>${sum}</td>
             </tr>
          `);
 
          countRow++;
-      };
-
-      if (target.id == 'clean') {
-         input1.value = '';
-         input2.value = '';
       };
 
       if (target.id == 'cleanResult') {
@@ -94,14 +92,18 @@ document.addEventListener("DOMContentLoaded", () => {
       };
    });
 
-   document.querySelector('table').addEventListener('click', function (event) {
+   const table = document.querySelector('table');
+
+   table.addEventListener('click', function (event) {
       let target = event.target;
 
       if (target.id == 'targetCopyResult') {
+         let copyResult = Number(target.innerText);
 
-         let resTest = Number(target.value);
-         console.log(resTest);
-         navigator.clipboard.writeText(resTest);
+         navigator.clipboard.writeText(copyResult)
+            .then(() => {
+               console.log(`Result: ${copyResult} - copied `);
+            });
       };
    });
 });
