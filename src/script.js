@@ -1,9 +1,38 @@
+function customValid(valueInput) {
+
+   let value = Number(valueInput.value);
+
+   if (value < 1 || value > 10) {
+      document.querySelector('#input1').style.color = "red";
+      document.querySelector('#input2').style.color = "red";
+      return false;
+   } else {
+      document.querySelector('#input1').style.color = "";
+      document.querySelector('#input2').style.color = "";
+      return true;
+   }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
    const calc = document.querySelector('.calculator');
    const calcResult = document.querySelector('.calculator__result');
    const input1 = document.querySelector('#input1');
    const input2 = document.querySelector('#input2');
    let countRow = 0;
+   let swich;
+
+   calc.addEventListener("input", function (event) {
+      let target = event.target;
+
+      if (target.tagName == "INPUT") {
+         swich = customValid(target);
+         if (swich) {
+            console.log(swich);
+         } else {
+            console.log(swich);
+         }
+      }
+   });
 
    calc.addEventListener('click', function (event) {
       let target = event.target;
