@@ -27,9 +27,9 @@ document.addEventListener("DOMContentLoaded", () => {
       // if (validation != true) return;
 
       if (target.id == 'addition' && validation == true) {
-         if (!calcResult.classList.contains('result--active')) {
-            calcResult.classList.add('result--active');
-         };
+         // if (!calcResult.classList.contains('result--active')) {
+         //    calcResult.classList.add('result--active');
+         // };
 
          sum = Number(input1.value) + Number(input2.value);
 
@@ -44,9 +44,9 @@ document.addEventListener("DOMContentLoaded", () => {
       };
 
       if (target.id == 'subtraction' && validation == true) {
-         if (!calcResult.classList.contains('result--active')) {
-            calcResult.classList.add('result--active');
-         };
+         // if (!calcResult.classList.contains('result--active')) {
+         //    calcResult.classList.add('result--active');
+         // };
 
          sum = Number(input1.value) - Number(input2.value);
 
@@ -61,9 +61,9 @@ document.addEventListener("DOMContentLoaded", () => {
       };
 
       if (target.id == 'division' && validation == true) {
-         if (!calcResult.classList.contains('result--active')) {
-            calcResult.classList.add('result--active');
-         };
+         // if (!calcResult.classList.contains('result--active')) {
+         //    calcResult.classList.add('result--active');
+         // };
 
          sum = Number(input1.value) / Number(input2.value);
 
@@ -78,9 +78,9 @@ document.addEventListener("DOMContentLoaded", () => {
       };
 
       if (target.id == 'multiplication' && validation == true) {
-         if (!calcResult.classList.contains('result--active')) {
-            calcResult.classList.add('result--active');
-         };
+         // if (!calcResult.classList.contains('result--active')) {
+         //    calcResult.classList.add('result--active');
+         // };
 
          sum = Number(input1.value) * Number(input2.value);
 
@@ -104,19 +104,19 @@ document.addEventListener("DOMContentLoaded", () => {
       };
 
       if (target.tagName == 'BUTTON' && target.id != 'cleanResult') {
-         if (validation == false) {
-            if (!calcResult.classList.contains('result--active')) {
-               calcResult.classList.add('result--active');
-            };
+         if (!calcResult.classList.contains('result--active')) {
+            calcResult.classList.add('result--active');
+         };
 
+         if (validation == false) {
             input1.value = '';
             input2.value = '';
 
             calcResult.insertAdjacentHTML('afterbegin', `
-            <tr>
-               <td style = "width:15%;">Result: </td>
-               <td id="targetCopyResult";>Invalid properties</td>
-            </tr>
+               <tr>
+                  <td style = "width:15%;">Result: </td>
+                  <td id="targetCopyResult";>Invalid properties</td>
+               </tr>
             `);
 
             countRow++;
@@ -149,6 +149,10 @@ function customValid(valueInput) {
    let value = Number(valueInput.value);
 
    if (value == 10) {
+      document.querySelector('#input1').style.color = "red";
+      document.querySelector('#input2').style.color = "red";
+      return false;
+   } else if (value == 20) {
       document.querySelector('#input1').style.color = "red";
       document.querySelector('#input2').style.color = "red";
       return false;
