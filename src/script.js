@@ -24,13 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
       let target = event.target;
       let sum;
 
-      // if (validation != true) return;
-
       if (target.id == 'addition' && validation == true) {
-         // if (!calcResult.classList.contains('result--active')) {
-         //    calcResult.classList.add('result--active');
-         // };
-
          sum = Number(input1.value) + Number(input2.value);
 
          calcResult.insertAdjacentHTML('afterbegin', `
@@ -44,10 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
       };
 
       if (target.id == 'subtraction' && validation == true) {
-         // if (!calcResult.classList.contains('result--active')) {
-         //    calcResult.classList.add('result--active');
-         // };
-
          sum = Number(input1.value) - Number(input2.value);
 
          calcResult.insertAdjacentHTML('afterbegin', `
@@ -61,10 +51,6 @@ document.addEventListener("DOMContentLoaded", () => {
       };
 
       if (target.id == 'division' && validation == true) {
-         // if (!calcResult.classList.contains('result--active')) {
-         //    calcResult.classList.add('result--active');
-         // };
-
          sum = Number(input1.value) / Number(input2.value);
 
          calcResult.insertAdjacentHTML('afterbegin', `
@@ -78,10 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
       };
 
       if (target.id == 'multiplication' && validation == true) {
-         // if (!calcResult.classList.contains('result--active')) {
-         //    calcResult.classList.add('result--active');
-         // };
-
          sum = Number(input1.value) * Number(input2.value);
 
          calcResult.insertAdjacentHTML('afterbegin', `
@@ -103,7 +85,13 @@ document.addEventListener("DOMContentLoaded", () => {
          countRow = 0;
       };
 
-      if (target.tagName == 'BUTTON' && target.id != 'cleanResult') {
+      if (target.id == 'clean') {
+         input1.value = '';
+         input2.value = '';
+      };
+
+      if (target.tagName == 'BUTTON' && target.id != 'cleanResult' && target.id != 'clean') {
+
          if (!calcResult.classList.contains('result--active')) {
             calcResult.classList.add('result--active');
          };
