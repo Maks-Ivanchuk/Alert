@@ -1,44 +1,32 @@
-function customValid(valueInput) {
-
-   let value = Number(valueInput.value);
-
-   if (value < 1 || value > 10) {
-      document.querySelector('#input1').style.color = "red";
-      document.querySelector('#input2').style.color = "red";
-      return false;
-   } else {
-      document.querySelector('#input1').style.color = "";
-      document.querySelector('#input2').style.color = "";
-      return true;
-   }
-}
-
 document.addEventListener("DOMContentLoaded", () => {
    const calc = document.querySelector('.calculator');
    const calcResult = document.querySelector('.calculator__result');
    const input1 = document.querySelector('#input1');
    const input2 = document.querySelector('#input2');
    let countRow = 0;
-   let swich;
+   let validation = true;
 
    calc.addEventListener("input", function (event) {
       let target = event.target;
 
       if (target.tagName == "INPUT") {
-         swich = customValid(target);
-         if (swich) {
-            console.log(swich);
+         validation = customValid(target);
+         if (validation == true) {
+            console.log(validation);
          } else {
-            console.log(swich);
+            console.log(validation);
          }
       }
    });
+
 
    calc.addEventListener('click', function (event) {
       let target = event.target;
       let sum;
 
-      if (target.id == 'addition') {
+      // if (validation != true) return;
+
+      if (target.id == 'addition' && validation == true) {
          if (!calcResult.classList.contains('result--active')) {
             calcResult.classList.add('result--active');
          };
@@ -55,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
          countRow++;
       };
 
-      if (target.id == 'subtraction') {
+      if (target.id == 'subtraction' && validation == true) {
          if (!calcResult.classList.contains('result--active')) {
             calcResult.classList.add('result--active');
          };
@@ -72,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
          countRow++;
       };
 
-      if (target.id == 'division') {
+      if (target.id == 'division' && validation == true) {
          if (!calcResult.classList.contains('result--active')) {
             calcResult.classList.add('result--active');
          };
@@ -89,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
          countRow++;
       };
 
-      if (target.id == 'multiplication') {
+      if (target.id == 'multiplication' && validation == true) {
          if (!calcResult.classList.contains('result--active')) {
             calcResult.classList.add('result--active');
          };
@@ -116,8 +104,27 @@ document.addEventListener("DOMContentLoaded", () => {
       };
 
       if (target.tagName == 'BUTTON' && target.id != 'cleanResult') {
-         input1.value = '';
-         input2.value = '';
+         if (validation == false) {
+            if (!calcResult.classList.contains('result--active')) {
+               calcResult.classList.add('result--active');
+            };
+
+            input1.value = '';
+            input2.value = '';
+
+            calcResult.insertAdjacentHTML('afterbegin', `
+            <tr>
+               <td style = "width:15%;">Result: </td>
+               <td id="targetCopyResult";>Invalid properties</td>
+            </tr>
+            `);
+
+            countRow++;
+            validation = true;
+         } else {
+            input1.value = '';
+            input2.value = '';
+         };
       };
    });
 
@@ -136,3 +143,18 @@ document.addEventListener("DOMContentLoaded", () => {
       };
    });
 });
+
+function customValid(valueInput) {
+
+   let value = Number(valueInput.value);
+
+   if (value == 10) {
+      document.querySelector('#input1').style.color = "red";
+      document.querySelector('#input2').style.color = "red";
+      return false;
+   } else {
+      document.querySelector('#input1').style.color = "";
+      document.querySelector('#input2').style.color = "";
+      return true;
+   }
+}
