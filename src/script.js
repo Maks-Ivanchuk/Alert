@@ -136,14 +136,14 @@ function customValid(valueInput) {
 
    let value = Number(valueInput.value);
 
-   if (value == 10) {
+   if (value == ) {
       document.querySelector('#input1').style.color = "red";
       document.querySelector('#input2').style.color = "red";
       return false;
-   } else if (value == 20) {
-      document.querySelector('#input1').style.color = "red";
-      document.querySelector('#input2').style.color = "red";
-      return false;
+   // } else if (value <= 10) {
+   //    document.querySelector('#input1').style.color = "red";
+   //    document.querySelector('#input2').style.color = "red";
+   //    return false;
    } else {
       document.querySelector('#input1').style.color = "";
       document.querySelector('#input2').style.color = "";
