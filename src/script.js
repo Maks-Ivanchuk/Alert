@@ -15,8 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log(validation);
          } else {
             console.log(validation);
-         }
-      }
+         };
+      };
    });
 
 
@@ -88,6 +88,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (target.id == 'clean') {
          input1.value = '';
          input2.value = '';
+         input1.classList.remove("input-invalid");
+         input2.classList.remove("input-invalid");
       };
 
       if (target.tagName == 'BUTTON' && target.id != 'cleanResult' && target.id != 'clean') {
@@ -99,6 +101,8 @@ document.addEventListener("DOMContentLoaded", () => {
          if (validation == false) {
             input1.value = '';
             input2.value = '';
+            input1.classList.remove("input-invalid");
+            input2.classList.remove("input-invalid");
 
             calcResult.insertAdjacentHTML('afterbegin', `
                <tr>
@@ -135,18 +139,18 @@ document.addEventListener("DOMContentLoaded", () => {
 function customValid(valueInput) {
 
    let value = Number(valueInput.value);
+   let inputTarget = valueInput;
 
-   if (value == ) {
-      document.querySelector('#input1').style.color = "red";
-      document.querySelector('#input2').style.color = "red";
+   if (value == `.`) {
+      inputTarget.classList.add("input-invalid");
       return false;
-   // } else if (value <= 10) {
-   //    document.querySelector('#input1').style.color = "red";
-   //    document.querySelector('#input2').style.color = "red";
-   //    return false;
+
+   } else if (value > 0 && value < 10) {
+      inputTarget.classList.add("input-invalid");
+      return false;
+
    } else {
-      document.querySelector('#input1').style.color = "";
-      document.querySelector('#input2').style.color = "";
+      inputTarget.classList.remove("input-invalid");
       return true;
    }
 }
