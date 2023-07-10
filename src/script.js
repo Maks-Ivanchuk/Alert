@@ -6,18 +6,24 @@ document.addEventListener("DOMContentLoaded", () => {
    let countRow = 0;
    let validation = true;
 
-   calc.addEventListener("input", function (event) {
-      let target = event.target;
+   // input1.addEventListener("keyup", function () {
+      
+   //    this.value = this.value.replace(/[^\d]{2}/g, "");
+   //    console.log(this.value);
+   // });
 
-      if (target.tagName == "INPUT") {
-         validation = customValid(target);
-         if (validation == true) {
-            console.log(validation);
-         } else {
-            console.log(validation);
-         };
-      };
-   });
+   // calc.addEventListener("input", function (event) {
+   //    let target = event.target;
+
+   //    if (target.tagName == "INPUT") {
+   //       validation = customValid(target);
+   //       if (validation == true) {
+   //          console.log(validation);
+   //       } else {
+   //          console.log(validation);
+   //       };
+   //    };
+   // });
 
 
    calc.addEventListener('click', function (event) {
