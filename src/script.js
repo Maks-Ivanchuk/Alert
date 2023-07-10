@@ -116,6 +116,8 @@ document.addEventListener("DOMContentLoaded", () => {
          } else {
             input1.value = '';
             input2.value = '';
+            input1.classList.remove("input-invalid");
+            input2.classList.remove("input-invalid");
          };
       };
    });
@@ -136,21 +138,41 @@ document.addEventListener("DOMContentLoaded", () => {
    });
 });
 
+let valid1 = true;
+let valid2 = true;
+
 function customValid(valueInput) {
 
    let value = Number(valueInput.value);
    let inputTarget = valueInput;
 
-   if (value == `.`) {
-      inputTarget.classList.add("input-invalid");
-      return false;
-
-   } else if (value > 0 && value < 10) {
-      inputTarget.classList.add("input-invalid");
-      return false;
-
-   } else {
-      inputTarget.classList.remove("input-invalid");
+   if (inputTarget.id == "input1") {
+      console.log(value);
+      
+      if (value > 1 && value < 3) {
+         inputTarget.classList.add("input-invalid");
+         valid1 = false;
+      } else {
+         inputTarget.classList.remove("input-invalid");
+         valid1 = true;
+      };
+      console.log(valid1);
+   } else if (inputTarget.id == "input2") {
+      console.log(value);
+      
+      if (value > 1 && value < 3) {
+         inputTarget.classList.add("input-invalid");
+         valid2 = false;
+      } else {
+         inputTarget.classList.remove("input-invalid");
+         valid2 = true;
+      };
+      console.log(valid2);
+   };
+      
+   if (valid1 == true && valid2 == true) {
       return true;
-   }
-}
+   } else {
+      return false;
+   };
+};
