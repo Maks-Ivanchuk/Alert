@@ -7,9 +7,12 @@
    font-weight: 400;
    line-height: 18px;
    padding: 3px 9px 3px 9px;
-   border-radius: 4px;
+   border-radius: 50%;
+   width: 65px;
+   height: 65px;
    color: $white-color-text;
    cursor: pointer;
+   background-color: black;
 
    &.button--large {
       font-size: 13px;
