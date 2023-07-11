@@ -1,40 +1,49 @@
 .calculator-android {
+   font-family: 'Roboto';
    display: grid;
-   grid-template-rows: 200px 400px;
+   grid-template-rows: 1fr 2fr ;
    width: 300px;
-   height: 600px;
+   height: 570px;
    background-color: white;
    border-radius: 10px 10px 20px 20px;
 }
 
 .calculator__screen {
    display: grid;
-   height: 180px;
    background-color: rgb(234, 240, 247);
-   grid-template-rows: 1fr 1fr;
+   grid-template-rows: 2fr 1fr;
    border-radius: 10px 10px 20px 20px;
 
    span {
       color: #000;
-      font-weight: bold;
    }
 }
 
 .calculator__history-results {
-   padding: 10px;
+   font-size: 25px;
+   font-weight: 400;
+   padding: 10px 10px 0 10px;
+   display: flex;
+   align-items: flex-end;
+   justify-content: flex-end;
 }
 
 .calculator__result {
-   padding: 10px;
+   font-size: 20px;
+   font-weight: 400;
+   padding: 0 10px 15px 10px;
+   display: flex;
+   align-items: flex-end;
+   justify-content: flex-end;
 }
 
 .calculator__button {
-   height: 400px;
    display: grid;
    grid-template-columns: repeat(4, 1fr);
    grid-template-rows: repeat(5, 1fr);
-   grid-column-gap: 5px;
-   grid-row-gap: 5px;
+   // grid-column-gap: 5px;
+   // grid-row-gap: 5px;
+   grid-gap: 5px;
    justify-content: space-between;
    align-items: center;
    justify-items: center;
