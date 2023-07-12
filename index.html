@@ -24,39 +24,33 @@
          <section class="components">
             <div class="container">
                <div class="calculator-android">
-                  <div class="calculator__screen">
-                     <div class="calculator__history-results">
-                        <span>1</span>
-                        <span>+</span>
-                        <span>2</span>
-                     </div>
-                     <div class="calculator__result">
-                        <span>3</span>
-                     </div>
+                  <div class="calculator__display">
+                     <div class="calculator__screen"></div>
+                     <div class="calculator__result"></div>
                   </div>
                   <div class="calculator__button">
-                     <!-- <button class="button button--ac">АС</button>
-                     <button class="button button--symbols">()</button>
-                     <button class="button button--symbols">&#37;</button>
-                     <button class="button button--symbols">&#247;</button>
-                     <button class="button button--num ">7</button>
-                     <button class="button button--num ">8</button>
-                     <button class="button button--num ">9</button>
-                     <button class="button button--symbols">&#215;</button>
-                     <button class="button button--num ">4</button>
-                     <button class="button button--num ">5</button>
-                     <button class="button button--num ">6</button>
-                     <button class="button button--symbols">&#8722;</button>
-                     <button class="button button--num ">3</button>
-                     <button class="button button--num ">2</button>
-                     <button class="button button--num ">1</button>
-                     <button class="button button--symbols">&#43;</button>
-                     <button class="button button--num ">0</button>
-                     <button class="button button--num ">&#8729;</button>
-                     <button class="button button--num ">&#9664;</button>
-                     <button class="button button--result">&#61;</button> -->
+                     <button class="button button--ac" data-all-clear>АС</button>
+                     <button class="button button--symbols" data-operation>( )</button>
+                     <button class="button button--symbols" data-operation value="%">%</button>
+                     <button class="button button--symbols" data-operation value="/">&#247;</button>
+                     <button class="button button--num" data-number value="7">7</button>
+                     <button class="button button--num" data-number value="8">8</button>
+                     <button class="button button--num" data-number value="9">9</button>
+                     <button class="button button--symbols" data-operation value="*">&#215;</button>
+                     <button class="button button--num" data-number value="4">4</button>
+                     <button class="button button--num" data-number value="5">5</button>
+                     <button class="button button--num" data-number value="6">6</button>
+                     <button class="button button--symbols" data-operation value="-">-</button>
+                     <button class="button button--num" data-number value="1">1</button>
+                     <button class="button button--num" data-number value="2">2</button>
+                     <button class="button button--num" data-number value="3">3</button>
+                     <button class="button button--symbols" data-operation value="+">+</button>
+                     <button class="button button--num" data-number value="0">0</button>
+                     <button class="button button--num" data-number value=",">,</button>
+                     <button class="button button--num" data-delete>&#9003;</button>
+                     <button class="button button--result" data-equals value="=">=</button>
 
-                     <input class="button button--ac" type="button" value="AC"></input>
+                     <!-- <input class="button button--ac" type="button" value="AC"></input>
                      <input class="button button--symbols" type="button" value="()"></input>
                      <input class="button button--symbols" type="button" value="%"></input>
                      <input class="button button--symbols" type="button" value="&#247"></input>
@@ -75,7 +69,7 @@
                      <input class="button button--num" type="button" value="0"></input>
                      <input class="button button--num" type="button" value=","></input>
                      <input class="button button--num" type="button" value="del"></input>
-                     <input class="button button--result" type="button" value="="></input>
+                     <input class="button button--result" type="button" value="="></input> -->
                   </div>
                </div>
             </div>

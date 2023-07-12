@@ -10,8 +10,16 @@
    height: 65px;
    color: #000;
    cursor: pointer;
-   background-color: black;
+   transition: all 0.2s;
 
+   &:hover {
+      filter: brightness(95%);
+   }
+
+   &:active {
+      filter: brightness(90%);
+      border-radius: 25%;
+   }
 
    &.button--num {
       background-color: #f6f6f6;
@@ -29,4 +37,6 @@
    &.button--ac {
       background-color: #b3f0c1
    }
+
+
 }
