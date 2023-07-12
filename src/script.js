@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
       let sum;
 
       if (target.id == 'addition' && validation == true) {
-         sum = Number(input1.value) + Number(input2.value);
+         sum = +(Number(input1.value) + Number(input2.value)).toFixed(16);
 
          calcResult.insertAdjacentHTML('afterbegin', `
             <tr>
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
       };
 
       if (target.id == 'subtraction' && validation == true) {
-         sum = Number(input1.value) - Number(input2.value);
+         sum = +(Number(input1.value) - Number(input2.value)).toFixed(16);
 
          calcResult.insertAdjacentHTML('afterbegin', `
             <tr>
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
       };
 
       if (target.id == 'division' && validation == true) {
-         sum = Number(input1.value) / Number(input2.value);
+         sum = +(Number(input1.value) / Number(input2.value)).toFixed(16);
 
          calcResult.insertAdjacentHTML('afterbegin', `
             <tr>
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
       };
 
       if (target.id == 'multiplication' && validation == true) {
-         sum = Number(input1.value) * Number(input2.value);
+         sum = +(Number(input1.value) * Number(input2.value)).toFixed(16);
 
          calcResult.insertAdjacentHTML('afterbegin', `
             <tr>
@@ -148,7 +148,7 @@ function customValid(valueInput) {
 
    if (inputTarget.id == "input1") {
       console.log(value);
-      
+
       if (value > 1 && value < 3) {
          inputTarget.classList.add("input-invalid");
          valid1 = false;
@@ -159,7 +159,7 @@ function customValid(valueInput) {
       console.log(valid1);
    } else if (inputTarget.id == "input2") {
       console.log(value);
-      
+
       if (value > 1 && value < 3) {
          inputTarget.classList.add("input-invalid");
          valid2 = false;
@@ -169,7 +169,7 @@ function customValid(valueInput) {
       };
       console.log(valid2);
    };
-      
+
    if (valid1 == true && valid2 == true) {
       return true;
    } else {
