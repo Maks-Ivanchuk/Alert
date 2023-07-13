@@ -10,7 +10,7 @@
    height: 65px;
    color: #000;
    cursor: pointer;
-   transition: all 0.2s;
+   transition: all 0.3s;
 
    &:hover {
       filter: brightness(95%);
@@ -37,6 +37,4 @@
    &.button--ac {
       background-color: #b3f0c1
    }
-
-
 }

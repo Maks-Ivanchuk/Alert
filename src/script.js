@@ -165,34 +165,54 @@
 document.addEventListener("DOMContentLoaded", () => {
    const numButtons = document.querySelectorAll('[data-number]');
    const operationButtons = document.querySelectorAll('[data-operation]');
-   const screen = document.querySelector('.calculator__screen');
+   const currentOperation = document.querySelector('.calculator__current');
    const delOneEl = document.querySelector('[data-delete]');
    const delAllEl = document.querySelector('[data-all-clear]');
 
+   let inputNumber = null;
+   let sign = null;
+   let sum;
 
+   function valueAssignment(input) {
+      if (inputNumber == null) {
+         inputNumber = input;
+         return inputNumber = Number(inputNumber);
+      } else {
+         inputNumber += input;
+         return inputNumber = Number(inputNumber);
+      };
+   };
 
+   function definitionSign(input) {
+      if (sign != false) return false;
+      sign = Number(input)
+      return true;
+   };
 
-   function onScreen(val) {
-      screen.innerText += val;
+   function outputOnScreen(val) {
+      currentOperation.innerText += val;
    };
 
    function delOneElement() {
-      screen.innerText = screen.innerText.slice(0, -1);
+      currentOperation.innerText = currentOperation.innerText.slice(0, -1);
    };
 
    function delAllElements() {
-      screen.innerText = '';
+      currentOperation.innerText = '';
    };
 
    numButtons.forEach(button => {
       button.addEventListener('click', function () {
-         onScreen(this.value);
+         valueAssignment(this.value);
+         outputOnScreen(this.value);
+         console.log(inputNumber);
       });
    });
 
-   operationButtons.forEach(oparant => {
-      oparant.addEventListener('click', function () {
-         onScreen(this.value);
+   operationButtons.forEach(operant => {
+      operant.addEventListener('click', function () {
+         outputOnScreen(this.value);
+         inputNumber = null;
       });
    });
 
@@ -203,5 +223,4 @@ document.addEventListener("DOMContentLoaded", () => {
    delAllEl.onclick = function () {
       delAllElements();
    }
-
 });
