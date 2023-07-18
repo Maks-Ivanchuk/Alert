@@ -11,20 +11,23 @@
 .calculator__output {
    display: grid;
    background-color: rgb(234, 240, 247);
-   grid-template-rows: 5fr 3fr;
+   grid-template-rows: 2fr 1fr;
+   padding: 10px;
    border-radius: 10px 10px 20px 20px;
    color: #000;
 }
+.output__wrapper {
+   display: flex;
+   align-items: flex-end;
+   flex-direction: row;
+   justify-content: flex-end;
+   flex-wrap: wrap;
+}
 
-.calculator__current {
+.output__current-operand, .output__previous-operand {
    font-size: 25px;
    font-weight: 400;
-   padding: 10px 10px 0 10px;
-   display: flex;
-   flex-wrap: wrap;
-   max-width: 300px;
-   align-items: flex-end;
-   justify-content: flex-end;
+   max-width: 280px;
 }
 
 .calculator__result {
@@ -40,8 +43,6 @@
    display: grid;
    grid-template-columns: repeat(4, 1fr);
    grid-template-rows: repeat(5, 1fr);
-   // grid-column-gap: 5px;
-   // grid-row-gap: 5px;
    grid-gap: 5px;
    justify-content: space-between;
    align-items: center;
