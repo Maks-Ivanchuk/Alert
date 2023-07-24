@@ -162,65 +162,101 @@
 //       return false;
 //    };
 // };
+
+
 document.addEventListener("DOMContentLoaded", () => {
-   const numButtons = document.querySelectorAll('[data-number]');
+   const calculatorButtons = document.querySelectorAll('.calculator__button');
+   const numberButtons = document.querySelectorAll('[data-number]');
    const operationButtons = document.querySelectorAll('[data-operation]');
-   const currentOperation = document.querySelector('.calculator__current');
-   const delOneEl = document.querySelector('[data-delete]');
-   const delAllEl = document.querySelector('[data-all-clear]');
+   const equalsButton = document.querySelector('[data-equals]');
+   const deleteButton = document.querySelector('[data-delete]');
+   const allClearButton = document.querySelector('[data-all-clear]');
+   const previousOperandTextElement = document.querySelector('.output__previous-operand');
+   const operationElement = document.querySelector('.output__operation');
+   const currentOperandTextElement = document.querySelector('.output__current-operand');
 
-   let inputNumber = null;
-   let sign = null;
-   let sum;
+   let firstOperand;
+   let secondOperand;
+   let operation;
 
-   function valueAssignment(input) {
-      if (inputNumber == null) {
-         inputNumber = input;
-         return inputNumber = Number(inputNumber);
-      } else {
-         inputNumber += input;
-         return inputNumber = Number(inputNumber);
+   numberButtons.forEach(numberBtn => {
+      numberBtn.addEventListener('click', () => {
+         if (firstOperand == undefined) {
+            firstOperand = numberBtn.value;
+            currentOperandTextElement.innerHTML = firstOperand;
+         } else if (operation == undefined) {
+            firstOperand += numberBtn.value;
+            currentOperandTextElement.innerHTML = firstOperand;
+         } else if (previousOperandTextElement && secondOperand == undefined) {
+            secondOperand = numberBtn.value;
+            currentOperandTextElement.innerHTML = secondOperand;
+         } else if (previousOperandTextElement && secondOperand != undefined) {
+            secondOperand += numberBtn.value;
+            currentOperandTextElement.innerHTML = secondOperand;
+         };
+      });
+   });
+
+   operationButtons.forEach(operationBtn => {
+      operationBtn.addEventListener('click', () => {
+         previousOperandTextElement.innerHTML = currentOperandTextElement.innerHTML;
+         currentOperandTextElement.innerHTML = '';
+         operation = operationBtn.value;
+         operationElement.innerHTML = operation;
+      });
+   });
+
+   deleteButton.addEventListener('click', () => {
+      // додати перевірку, що коли = очистило значення firstOperand то слайс видаляє тільки з екрану і перезаписує значення
+      firstOperand = firstOperand.slice(0, -1)
+      currentOperandTextElement.innerHTML = firstOperand;
+      // currentOperandTextElement.innerHTML = currentOperandTextElement.innerHTML.slice(0, -1);
+      // firstOperand = firstOperand.slice(0, -1);
+   });
+
+   allClearButton.addEventListener('click', () => {
+      previousOperandTextElement.innerHTML = '';
+      currentOperandTextElement.innerHTML = '';
+      operationElement.innerHTML = '';
+      firstOperand = undefined;
+      secondOperand = undefined;
+      operation = undefined;
+   });
+
+
+   equalsButton.addEventListener('click', () => {
+      let res = compute(firstOperand, secondOperand, operation);
+
+      previousOperandTextElement.innerHTML = '';
+      currentOperandTextElement.innerHTML = '';
+      operationElement.innerHTML = '';
+      firstOperand = res;
+      secondOperand = undefined;
+      operation = undefined;
+
+      currentOperandTextElement.innerHTML = firstOperand;
+   });
+
+   function compute(a, b, operation) {
+      let result;
+      switch (operation) {
+         case "+":
+            result = Number(a) + Number(b);
+            break;
+         case "-":
+            result = Number(a) - Number(b);
+            break;
+         case "/":
+            result = Number(a) / Number(b);
+            break;
+         case "*":
+            result = Number(a) * Number(b);
+            break;
+         default:
+            return
       };
-   };
 
-   function definitionSign(input) {
-      if (sign != false) return false;
-      sign = Number(input)
-      return true;
-   };
-
-   function outputOnScreen(val) {
-      currentOperation.innerText += val;
-   };
-
-   function delOneElement() {
-      currentOperation.innerText = currentOperation.innerText.slice(0, -1);
-   };
-
-   function delAllElements() {
-      currentOperation.innerText = '';
-   };
-
-   numButtons.forEach(button => {
-      button.addEventListener('click', function () {
-         valueAssignment(this.value);
-         outputOnScreen(this.value);
-         console.log(inputNumber);
-      });
-   });
-
-   operationButtons.forEach(operant => {
-      operant.addEventListener('click', function () {
-         outputOnScreen(this.value);
-         inputNumber = null;
-      });
-   });
-
-   delOneEl.onclick = function () {
-      delOneElement();
-   }
-
-   delAllEl.onclick = function () {
-      delAllElements();
+      return result;
    }
 });
+

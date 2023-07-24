@@ -16,6 +16,7 @@
    border-radius: 10px 10px 20px 20px;
    color: #000;
 }
+
 .output__wrapper {
    display: flex;
    align-items: flex-end;
@@ -24,7 +25,9 @@
    flex-wrap: wrap;
 }
 
-.output__current-operand, .output__previous-operand {
+.output__current-operand,
+.output__previous-operand,
+.output__operation {
    font-size: 25px;
    font-weight: 400;
    max-width: 280px;
