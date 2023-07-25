@@ -165,7 +165,6 @@
 
 
 document.addEventListener("DOMContentLoaded", () => {
-   const calculatorButtons = document.querySelectorAll('.calculator__button');
    const numberButtons = document.querySelectorAll('[data-number]');
    const operationButtons = document.querySelectorAll('[data-operation]');
    const equalsButton = document.querySelector('[data-equals]');
@@ -180,7 +179,24 @@ document.addEventListener("DOMContentLoaded", () => {
    let operation;
 
    numberButtons.forEach(numberBtn => {
-      numberBtn.addEventListener('click', () => {
+      numberBtn.addEventListener('click', (event) => {
+         let target = event.target;
+
+         if (target.value == '0') {
+            if (firstOperand == '0' || secondOperand == '0') return; // якщо вже введено один 0 то більше не вводимо
+         }
+
+         // if (event.target.value == '.') { реалізувати пошут по тому, чи є вже крапка чи ні
+         //    if (firstOperand == '0' || secondOperand == '0') return;
+         // }
+
+         if (target.value == '.' && currentOperandTextElement.innerHTML == "") { //якщо пусто і натиснути на крапку то буде '0.'
+            firstOperand = '0.'
+            currentOperandTextElement.innerHTML = firstOperand;
+         };
+
+         // if (target.value == '.') return;
+
          if (firstOperand == undefined) {
             firstOperand = numberBtn.value;
             currentOperandTextElement.innerHTML = firstOperand;
@@ -198,23 +214,55 @@ document.addEventListener("DOMContentLoaded", () => {
    });
 
    operationButtons.forEach(operationBtn => {
-      operationBtn.addEventListener('click', () => {
-         previousOperandTextElement.innerHTML = currentOperandTextElement.innerHTML;
-         currentOperandTextElement.innerHTML = '';
-         operation = operationBtn.value;
-         operationElement.innerHTML = operation;
+      operationBtn.addEventListener('click', (event) => {
+         let target = event.target;
+
+         if (currentOperandTextElement.innerHTML == "0." || previousOperandTextElement.innerHTML == "0.") return;
+
+         //    if (currentOperandTextElement.innerHTML != "" && previousOperandTextElement.innerHTML != "") {
+         //    if (target.value == '.') {
+         //       firstOperand += target.value;
+         //       currentOperandTextElement.innerHTML = firstOperand;
+         //    } else {
+         //       return;
+         //    };
+         // };
+
+         if (currentOperandTextElement.innerHTML != "" && previousOperandTextElement.innerHTML == "") {
+            previousOperandTextElement.innerHTML = currentOperandTextElement.innerHTML;
+            currentOperandTextElement.innerHTML = '';
+            operation = operationBtn.value;
+            operationElement.innerHTML = operation; // додати, коли клац. опертори різні то вони змінюються оператора
+         };
+
+         if (target.value == "-" && operation != '-') { // щоб було міносове число але не коли віднімаєш
+            firstOperand = operationBtn.value;
+            currentOperandTextElement.innerHTML = firstOperand;
+         };
       });
    });
 
+
+
+
+
    deleteButton.addEventListener('click', () => {
-      // додати перевірку, що коли = очистило значення firstOperand то слайс видаляє тільки з екрану і перезаписує значення
-      firstOperand = firstOperand.slice(0, -1)
-      currentOperandTextElement.innerHTML = firstOperand;
-      // currentOperandTextElement.innerHTML = currentOperandTextElement.innerHTML.slice(0, -1);
-      // firstOperand = firstOperand.slice(0, -1);
+      if (currentOperandTextElement.innerHTML == "" && previousOperandTextElement.innerHTML == "") return;
+
+      currentOperandTextElement.innerHTML = currentOperandTextElement.innerHTML.slice(0, -1);
+
+      if (secondOperand == undefined) {
+         firstOperand = '';
+         firstOperand = currentOperandTextElement.innerHTML;
+      } else {
+         secondOperand = '';
+         secondOperand = currentOperandTextElement.innerHTML;
+      };
    });
 
    allClearButton.addEventListener('click', () => {
+      if (currentOperandTextElement.innerHTML == "" && previousOperandTextElement.innerHTML == "") return;
+
       previousOperandTextElement.innerHTML = '';
       currentOperandTextElement.innerHTML = '';
       operationElement.innerHTML = '';
@@ -223,8 +271,9 @@ document.addEventListener("DOMContentLoaded", () => {
       operation = undefined;
    });
 
-
    equalsButton.addEventListener('click', () => {
+      if (currentOperandTextElement.innerHTML == "" || previousOperandTextElement.innerHTML == "") return;
+
       let res = compute(firstOperand, secondOperand, operation);
 
       previousOperandTextElement.innerHTML = '';
@@ -251,6 +300,9 @@ document.addEventListener("DOMContentLoaded", () => {
             break;
          case "*":
             result = Number(a) * Number(b);
+            break;
+         case "%":
+            result = Number(a) - ((Number(a) * Number(b)) / 100);
             break;
          default:
             return
