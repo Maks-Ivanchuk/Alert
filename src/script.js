@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
    let currentOperand;
    let previousOperand;
    let operation;
+   let minus = false;
 
    numberButtons.forEach(numberBtn => {
       numberBtn.addEventListener('click', () => {
@@ -35,20 +36,31 @@ document.addEventListener("DOMContentLoaded", () => {
          if (currentOperand == "0.") return;
          //if (toString(currentOperandTextElement.innerHTML).includes('-')) console.log('df');
 
+         // if (target.value == '-') {
+         //    if (currentOperand != '-') {
+         //       currentOperand = target.value;
+         //       currentOperandTextElement.innerHTML = currentOperand;
+         //    } else if (currentOperand == '-') {
+         //       currentOperand = undefined;
+         //       currentOperandTextElement.innerHTML = '';
+         //    };
+         //    return;
+         // };
          if (target.value == '-') {
-            if (currentOperand != '-') {
-               currentOperand = target.value;
-               currentOperandTextElement.innerHTML = currentOperand;
-            } else if (currentOperand == '-') {
-               currentOperand = undefined;
-               currentOperandTextElement.innerHTML = '';
-            };
-            return;
-         };
-         if (currentOperand == undefined && previousOperand == undefined) return;
+
+         }
 
          //тут повна залупа
+         if (minus == false) {
+            if (currentOperand == undefined || currentOperand == '-') return;
 
+            previousOperand = currentOperand;
+            previousOperandTextElement.innerHTML = previousOperand;
+            operation = target.value;
+            operationElement.innerHTML = operation;
+            currentOperandTextElement.innerHTML = '';
+            currentOperand = undefined;
+         };
 
          // if (previousOperand != undefined) {
          //    operation = target.value;
@@ -56,12 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
          // } else if (previousOperand != undefined && currentOperand == undefined) {
          //    return;
          // } else {
-         previousOperand = currentOperand;
-         previousOperandTextElement.innerHTML = previousOperand;
-         operation = target.value;
-         operationElement.innerHTML = operation;
-         currentOperandTextElement.innerHTML = '';
-         currentOperand = undefined;
+
          // };
       });
    });
