@@ -33,20 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
          let target = event.target;
 
          if (currentOperand == "0.") return;
+         //if (toString(currentOperandTextElement.innerHTML).includes('-')) console.log('df');
 
-         // if (target.value == '-') {
-         //    if (currentOperand == undefined) {
-         //       if (previousOperand == undefined) {
-         //          currentOperand = target.value;
-         //          currentOperandTextElement.innerHTML = currentOperand;
-         //          return;
-         //       };
-         //    } else if (currentOperand == '-') {
-         //       currentOperand = undefined;
-         //       currentOperandTextElement.innerHTML = '';
-         //       return;
-         //    };
-         // };
          if (target.value == '-') {
             if (currentOperand != '-') {
                currentOperand = target.value;
@@ -57,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
             };
             return;
          };
-
+         if (currentOperand == undefined && previousOperand == undefined) return;
 
          //тут повна залупа
 
