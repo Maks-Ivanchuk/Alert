@@ -166,6 +166,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
    const numberButtons = document.querySelectorAll('[data-number]');
+   const pointButton = document.querySelector('[data-point]');
    const operationButtons = document.querySelectorAll('[data-operation]');
    const equalsButton = document.querySelector('[data-equals]');
    const deleteButton = document.querySelector('[data-delete]');
@@ -174,42 +175,22 @@ document.addEventListener("DOMContentLoaded", () => {
    const operationElement = document.querySelector('.output__operation');
    const currentOperandTextElement = document.querySelector('.output__current-operand');
 
-   let firstOperand;
-   let secondOperand;
+   let currentOperand;
+   let previousOperand;
    let operation;
 
    numberButtons.forEach(numberBtn => {
-      numberBtn.addEventListener('click', (event) => {
-         let target = event.target;
+      numberBtn.addEventListener('click', () => {
 
-         if (target.value == '0') {
-            if (firstOperand == '0' || secondOperand == '0') return; // якщо вже введено один 0 то більше не вводимо
-         }
+         if (currentOperand == '0') return; // якщо вже введено один 0 то більше не вводимо
 
-         // if (event.target.value == '.') { реалізувати пошут по тому, чи є вже крапка чи ні
-         //    if (firstOperand == '0' || secondOperand == '0') return;
-         // }
-
-         if (target.value == '.' && currentOperandTextElement.innerHTML == "") { //якщо пусто і натиснути на крапку то буде '0.'
-            firstOperand = '0.'
-            currentOperandTextElement.innerHTML = firstOperand;
+         if (currentOperand == undefined) {
+            currentOperand = numberBtn.value
+         } else {
+            currentOperand += numberBtn.value;
          };
 
-         // if (target.value == '.') return;
-
-         if (firstOperand == undefined) {
-            firstOperand = numberBtn.value;
-            currentOperandTextElement.innerHTML = firstOperand;
-         } else if (operation == undefined) {
-            firstOperand += numberBtn.value;
-            currentOperandTextElement.innerHTML = firstOperand;
-         } else if (previousOperandTextElement && secondOperand == undefined) {
-            secondOperand = numberBtn.value;
-            currentOperandTextElement.innerHTML = secondOperand;
-         } else if (previousOperandTextElement && secondOperand != undefined) {
-            secondOperand += numberBtn.value;
-            currentOperandTextElement.innerHTML = secondOperand;
-         };
+         currentOperandTextElement.innerHTML = currentOperand;
       });
    });
 
@@ -217,33 +198,55 @@ document.addEventListener("DOMContentLoaded", () => {
       operationBtn.addEventListener('click', (event) => {
          let target = event.target;
 
-         if (currentOperandTextElement.innerHTML == "0." || previousOperandTextElement.innerHTML == "0.") return;
+         if (currentOperand == "0.") return;
 
-         //    if (currentOperandTextElement.innerHTML != "" && previousOperandTextElement.innerHTML != "") {
-         //    if (target.value == '.') {
-         //       firstOperand += target.value;
-         //       currentOperandTextElement.innerHTML = firstOperand;
-         //    } else {
-         //       return;
-         //    };
+         if (target.value == '-') {
+            if (currentOperand != undefined) {
+               operation = target.value;
+               operationElement.innerHTML = operation;
+            } else {
+               currentOperand = target.value;
+               currentOperandTextElement.innerHTML = currentOperand;
+               return;
+            }
+         };
+         previousOperand = currentOperand;
+         operation = target.value;
+         operationElement.innerHTML = operation;
+         currentOperand = undefined;
+         previousOperandTextElement.innerHTML = previousOperand;
+         currentOperandTextElement.innerHTML = '';
+
+
+         //if (currentOperandTextElement.innerHTML != "" && previousOperandTextElement.innerHTML == "") {
+         //    previousOperandTextElement.innerHTML = currentOperandTextElement.innerHTML;
+         //    currentOperand = undefined;
+         //    currentOperandTextElement.innerHTML = '';
+         //    operation = operationBtn.value;
+         //    operationElement.innerHTML = operation; // додати, коли клац. опертори різні то вони змінюються оператора
+         // } else {
+         //    operation = operationBtn.value;
+         //    operationElement.innerHTML = operation;
          // };
 
-         if (currentOperandTextElement.innerHTML != "" && previousOperandTextElement.innerHTML == "") {
-            previousOperandTextElement.innerHTML = currentOperandTextElement.innerHTML;
-            currentOperandTextElement.innerHTML = '';
-            operation = operationBtn.value;
-            operationElement.innerHTML = operation; // додати, коли клац. опертори різні то вони змінюються оператора
-         };
-
-         if (target.value == "-" && operation != '-') { // щоб було міносове число але не коли віднімаєш
-            firstOperand = operationBtn.value;
-            currentOperandTextElement.innerHTML = firstOperand;
-         };
+         // if (target.value == "-" && operation != '-') { // щоб було міносове число але не коли віднімаєш
+         //    currentOperand = operationBtn.value;
+         //    currentOperandTextElement.innerHTML = currentOperand;
+         // };
       });
    });
 
 
-
+   pointButton.addEventListener('click', () => {
+      if (currentOperandTextElement.innerHTML.includes('.')) return;
+      if (currentOperandTextElement.innerHTML == "") { //якщо пусто і натиснути на крапку то буде '0.'
+         currentOperand = '0.';
+         currentOperandTextElement.innerHTML = currentOperand;
+      } else {
+         currentOperand += '.';
+         currentOperandTextElement.innerHTML = currentOperand;
+      };
+   });
 
 
    deleteButton.addEventListener('click', () => {
@@ -251,12 +254,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       currentOperandTextElement.innerHTML = currentOperandTextElement.innerHTML.slice(0, -1);
 
-      if (secondOperand == undefined) {
-         firstOperand = '';
-         firstOperand = currentOperandTextElement.innerHTML;
+      if (previousOperand == undefined) {
+         currentOperand = '';
+         currentOperand = currentOperandTextElement.innerHTML;
       } else {
-         secondOperand = '';
-         secondOperand = currentOperandTextElement.innerHTML;
+         previousOperand = '';
+         previousOperand = currentOperandTextElement.innerHTML;
       };
    });
 
@@ -266,24 +269,24 @@ document.addEventListener("DOMContentLoaded", () => {
       previousOperandTextElement.innerHTML = '';
       currentOperandTextElement.innerHTML = '';
       operationElement.innerHTML = '';
-      firstOperand = undefined;
-      secondOperand = undefined;
+      currentOperand = undefined;
+      previousOperand = undefined;
       operation = undefined;
    });
 
    equalsButton.addEventListener('click', () => {
       if (currentOperandTextElement.innerHTML == "" || previousOperandTextElement.innerHTML == "") return;
 
-      let res = compute(firstOperand, secondOperand, operation);
+      let res = compute(previousOperand, currentOperand, operation);
 
       previousOperandTextElement.innerHTML = '';
       currentOperandTextElement.innerHTML = '';
       operationElement.innerHTML = '';
-      firstOperand = res;
-      secondOperand = undefined;
+      currentOperand = res;
+      previousOperand = undefined;
       operation = undefined;
 
-      currentOperandTextElement.innerHTML = firstOperand;
+      currentOperandTextElement.innerHTML = currentOperand;
    });
 
    function compute(a, b, operation) {
@@ -306,6 +309,10 @@ document.addEventListener("DOMContentLoaded", () => {
             break;
          default:
             return
+      };
+
+      if (String(result).length > 18) {
+         result = result.toFixed(1);
       };
 
       return result;
