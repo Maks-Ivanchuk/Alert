@@ -1,169 +1,3 @@
-// document.addEventListener("DOMContentLoaded", () => {
-//    const calc = document.querySelector('.calculator');
-//    const calcResult = document.querySelector('.calculator__result');
-//    const input1 = document.querySelector('#input1');
-//    const input2 = document.querySelector('#input2');
-//    let countRow = 0;
-//    let validation = true;
-
-//    calc.addEventListener('click', function (event) {
-//       let target = event.target;
-//       let sum;
-
-//       if (target.id == 'addition' && validation == true) {
-//          sum = Number(input1.value) + Number(input2.value);
-
-//          calcResult.insertAdjacentHTML('afterbegin', `
-//             <tr>
-//                <td style = "width:15%;">Result: </td>
-//                <td id="targetCopyResult";>${sum}</td>
-//             </tr>
-//          `);
-
-//          countRow++;
-//       };
-
-//       if (target.id == 'subtraction' && validation == true) {
-//          sum = Number(input1.value) - Number(input2.value);
-
-//          calcResult.insertAdjacentHTML('afterbegin', `
-//             <tr>
-//                <td style = "width:15%;">Result: </td>
-//                <td id="targetCopyResult";>${sum}</td>
-//             </tr>
-//          `);
-
-//          countRow++;
-//       };
-
-//       if (target.id == 'division' && validation == true) {
-//          sum = Number(input1.value) / Number(input2.value);
-
-//          calcResult.insertAdjacentHTML('afterbegin', `
-//             <tr>
-//                <td style = "width:15%;">Result: </td>
-//                <td id="targetCopyResult";>${sum}</td>
-//             </tr>
-//          `);
-
-//          countRow++;
-//       };
-
-//       if (target.id == 'multiplication' && validation == true) {
-//          sum = Number(input1.value) * Number(input2.value);
-
-//          calcResult.insertAdjacentHTML('afterbegin', `
-//             <tr>
-//                <td style = "width:15%;">Result: </td>
-//                <td id="targetCopyResult";>${sum}</td>
-//             </tr>
-//          `);
-
-//          countRow++;
-//       };
-
-//       if (target.id == 'cleanResult') {
-//          calcResult.classList.remove('result--active');
-//          for (let i = 0; i < countRow; i++) {
-//             calcResult.deleteRow(0);
-//          };
-
-//          countRow = 0;
-//       };
-
-//       if (target.id == 'clean') {
-//          input1.value = '';
-//          input2.value = '';
-//          input1.classList.remove("input-invalid");
-//          input2.classList.remove("input-invalid");
-//       };
-
-//       if (target.tagName == 'BUTTON' && target.id != 'cleanResult' && target.id != 'clean') {
-
-//          if (!calcResult.classList.contains('result--active')) {
-//             calcResult.classList.add('result--active');
-//          };
-
-//          if (validation == false) {
-//             input1.value = '';
-//             input2.value = '';
-//             input1.classList.remove("input-invalid");
-//             input2.classList.remove("input-invalid");
-
-//             calcResult.insertAdjacentHTML('afterbegin', `
-//                <tr>
-//                   <td style = "width:15%;">Result: </td>
-//                   <td id="targetCopyResult";>Invalid properties</td>
-//                </tr>
-//             `);
-
-//             countRow++;
-//             validation = true;
-//          } else {
-//             input1.value = '';
-//             input2.value = '';
-//             input1.classList.remove("input-invalid");
-//             input2.classList.remove("input-invalid");
-//          };
-//       };
-//    });
-
-//    const table = document.querySelector('table');
-
-//    table.addEventListener('click', function (event) {
-//       let target = event.target;
-
-//       if (target.id == 'targetCopyResult') {
-//          let copyResult = Number(target.innerText);
-
-//          navigator.clipboard.writeText(copyResult)
-//             .then(() => {
-//                console.log(`Result: ${copyResult} - copied `);
-//             });
-//       };
-//    });
-// });
-
-// let valid1 = true;
-// let valid2 = true;
-
-// function customValid(valueInput) {
-
-//    let value = Number(valueInput.value);
-//    let inputTarget = valueInput;
-
-//    if (inputTarget.id == "input1") {
-//       console.log(value);
-
-//       if (value > 1 && value < 3) {
-//          inputTarget.classList.add("input-invalid");
-//          valid1 = false;
-//       } else {
-//          inputTarget.classList.remove("input-invalid");
-//          valid1 = true;
-//       };
-//       console.log(valid1);
-//    } else if (inputTarget.id == "input2") {
-//       console.log(value);
-
-//       if (value > 1 && value < 3) {
-//          inputTarget.classList.add("input-invalid");
-//          valid2 = false;
-//       } else {
-//          inputTarget.classList.remove("input-invalid");
-//          valid2 = true;
-//       };
-//       console.log(valid2);
-//    };
-
-//    if (valid1 == true && valid2 == true) {
-//       return true;
-//    } else {
-//       return false;
-//    };
-// };
-
-
 document.addEventListener("DOMContentLoaded", () => {
    const numberButtons = document.querySelectorAll('[data-number]');
    const pointButton = document.querySelector('[data-point]');
@@ -200,38 +34,46 @@ document.addEventListener("DOMContentLoaded", () => {
 
          if (currentOperand == "0.") return;
 
+         // if (target.value == '-') {
+         //    if (currentOperand == undefined) {
+         //       if (previousOperand == undefined) {
+         //          currentOperand = target.value;
+         //          currentOperandTextElement.innerHTML = currentOperand;
+         //          return;
+         //       };
+         //    } else if (currentOperand == '-') {
+         //       currentOperand = undefined;
+         //       currentOperandTextElement.innerHTML = '';
+         //       return;
+         //    };
+         // };
          if (target.value == '-') {
-            if (currentOperand != undefined) {
-               operation = target.value;
-               operationElement.innerHTML = operation;
-            } else {
+            if (currentOperand != '-') {
                currentOperand = target.value;
                currentOperandTextElement.innerHTML = currentOperand;
-               return;
-            }
+            } else if (currentOperand == '-') {
+               currentOperand = undefined;
+               currentOperandTextElement.innerHTML = '';
+            };
+            return;
          };
+
+
+         //тут повна залупа
+
+
+         // if (previousOperand != undefined) {
+         //    operation = target.value;
+         //    operationElement.innerHTML = operation;
+         // } else if (previousOperand != undefined && currentOperand == undefined) {
+         //    return;
+         // } else {
          previousOperand = currentOperand;
+         previousOperandTextElement.innerHTML = previousOperand;
          operation = target.value;
          operationElement.innerHTML = operation;
-         currentOperand = undefined;
-         previousOperandTextElement.innerHTML = previousOperand;
          currentOperandTextElement.innerHTML = '';
-
-
-         //if (currentOperandTextElement.innerHTML != "" && previousOperandTextElement.innerHTML == "") {
-         //    previousOperandTextElement.innerHTML = currentOperandTextElement.innerHTML;
-         //    currentOperand = undefined;
-         //    currentOperandTextElement.innerHTML = '';
-         //    operation = operationBtn.value;
-         //    operationElement.innerHTML = operation; // додати, коли клац. опертори різні то вони змінюються оператора
-         // } else {
-         //    operation = operationBtn.value;
-         //    operationElement.innerHTML = operation;
-         // };
-
-         // if (target.value == "-" && operation != '-') { // щоб було міносове число але не коли віднімаєш
-         //    currentOperand = operationBtn.value;
-         //    currentOperandTextElement.innerHTML = currentOperand;
+         currentOperand = undefined;
          // };
       });
    });
@@ -239,6 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
    pointButton.addEventListener('click', () => {
       if (currentOperandTextElement.innerHTML.includes('.')) return;
+
       if (currentOperandTextElement.innerHTML == "") { //якщо пусто і натиснути на крапку то буде '0.'
          currentOperand = '0.';
          currentOperandTextElement.innerHTML = currentOperand;
@@ -248,24 +91,14 @@ document.addEventListener("DOMContentLoaded", () => {
       };
    });
 
-
    deleteButton.addEventListener('click', () => {
-      if (currentOperandTextElement.innerHTML == "" && previousOperandTextElement.innerHTML == "") return;
+      if (currentOperand == undefined) return;
 
       currentOperandTextElement.innerHTML = currentOperandTextElement.innerHTML.slice(0, -1);
-
-      if (previousOperand == undefined) {
-         currentOperand = '';
-         currentOperand = currentOperandTextElement.innerHTML;
-      } else {
-         previousOperand = '';
-         previousOperand = currentOperandTextElement.innerHTML;
-      };
+      currentOperand = currentOperandTextElement.innerHTML;
    });
 
    allClearButton.addEventListener('click', () => {
-      if (currentOperandTextElement.innerHTML == "" && previousOperandTextElement.innerHTML == "") return;
-
       previousOperandTextElement.innerHTML = '';
       currentOperandTextElement.innerHTML = '';
       operationElement.innerHTML = '';
@@ -304,18 +137,18 @@ document.addEventListener("DOMContentLoaded", () => {
          case "*":
             result = Number(a) * Number(b);
             break;
-         case "%":
-            result = Number(a) - ((Number(a) * Number(b)) / 100);
-            break;
+         // case "%":
+         //    result = Number(a) - ((Number(a) * Number(b)) / 100);
+         //    break;
          default:
             return
       };
 
-      if (String(result).length > 18) {
+      if (String(result).length > 10) {
          result = result.toFixed(1);
       };
 
       return result;
-   }
+   };
 });
 
