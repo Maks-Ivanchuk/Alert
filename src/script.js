@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
    let currentOperand;
    let previousOperand;
    let operation;
-   let minus = false;
 
    numberButtons.forEach(numberBtn => {
       numberBtn.addEventListener('click', () => {
@@ -34,42 +33,45 @@ document.addEventListener("DOMContentLoaded", () => {
          let target = event.target;
 
          if (currentOperand == "0.") return;
-         //if (toString(currentOperandTextElement.innerHTML).includes('-')) console.log('df');
+         if (currentOperand == undefined && previousOperand == undefined) return;
 
-         // if (target.value == '-') {
-         //    if (currentOperand != '-') {
+         
+
+
+
+         // if (target.value == '-' && currentOperand == undefined) {
+         //    if (previousOperand != undefined) return;
+               
+         //    if (!currentOperandTextElement.innerHTML.includes('-')) {
+         //       return
+         //    } else { 
+         //       console.log('first');
          //       currentOperand = target.value;
          //       currentOperandTextElement.innerHTML = currentOperand;
-         //    } else if (currentOperand == '-') {
-         //       currentOperand = undefined;
-         //       currentOperandTextElement.innerHTML = '';
+         //       return;
          //    };
-         //    return;
          // };
-         if (target.value == '-') {
-
-         }
 
          //тут повна залупа
-         if (minus == false) {
-            if (currentOperand == undefined || currentOperand == '-') return;
 
+         // if (previousOperand == undefined) {
+         //    previousOperand = currentOperand;
+         //    previousOperandTextElement.innerHTML = previousOperand;
+         //    operation = target.value;
+         //    operationElement.innerHTML = operation;
+
+         // } else {
+         if (previousOperand == undefined) {
             previousOperand = currentOperand;
             previousOperandTextElement.innerHTML = previousOperand;
             operation = target.value;
             operationElement.innerHTML = operation;
             currentOperandTextElement.innerHTML = '';
             currentOperand = undefined;
+         } else {
+            operation = target.value;
+            operationElement.innerHTML = operation;
          };
-
-         // if (previousOperand != undefined) {
-         //    operation = target.value;
-         //    operationElement.innerHTML = operation;
-         // } else if (previousOperand != undefined && currentOperand == undefined) {
-         //    return;
-         // } else {
-
-         // };
       });
    });
 
@@ -103,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
    });
 
    equalsButton.addEventListener('click', () => {
-      if (currentOperandTextElement.innerHTML == "" || previousOperandTextElement.innerHTML == "") return;
+      if (currentOperand == undefined || previousOperand== undefined) return;
 
       let res = compute(previousOperand, currentOperand, operation);
 
