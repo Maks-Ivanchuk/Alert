@@ -34,33 +34,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
          if (currentOperand == "0.") return;
          if (currentOperand == undefined && previousOperand == undefined) return;
+         if (currentOperandTextElement.innerHTML.lastIndexOf('.') ==
+            currentOperandTextElement.innerHTML.length - 1) return;
 
-         
+
+         // -----------------------------
+         if (previousOperand != undefined &&
+            currentOperand != undefined &&
+            operation != undefined &&
+            target.value == "%") {
+            if (currentOperandTextElement.innerHTML.includes('%')) return; //якщо все заповнено і клацнули %
+            //let operationHolder = operation; //зберігаємо значенення оператора
+
+            currentOperandTextElement.innerHTML += operationBtn.value;
+
+            //operation = operationHolder;
+            //operationElement.innerHTML = operationHolder;
+         };
+
+         if (target.value == "%") return;
+         // -----------------------------
 
 
-
-         // if (target.value == '-' && currentOperand == undefined) {
-         //    if (previousOperand != undefined) return;
-               
-         //    if (!currentOperandTextElement.innerHTML.includes('-')) {
-         //       return
-         //    } else { 
-         //       console.log('first');
-         //       currentOperand = target.value;
-         //       currentOperandTextElement.innerHTML = currentOperand;
-         //       return;
-         //    };
-         // };
-
-         //тут повна залупа
-
-         // if (previousOperand == undefined) {
-         //    previousOperand = currentOperand;
-         //    previousOperandTextElement.innerHTML = previousOperand;
-         //    operation = target.value;
-         //    operationElement.innerHTML = operation;
-
-         // } else {
          if (previousOperand == undefined) {
             previousOperand = currentOperand;
             previousOperandTextElement.innerHTML = previousOperand;
@@ -72,8 +67,13 @@ document.addEventListener("DOMContentLoaded", () => {
             operation = target.value;
             operationElement.innerHTML = operation;
          };
+
+
       });
    });
+
+   // ((previousOperand * currentOperand)) /100;
+   // result = Number(a) operation ((Number(a) * Number(b)) / 100);
 
 
    pointButton.addEventListener('click', () => {
@@ -105,7 +105,9 @@ document.addEventListener("DOMContentLoaded", () => {
    });
 
    equalsButton.addEventListener('click', () => {
-      if (currentOperand == undefined || previousOperand== undefined) return;
+      if (currentOperand == undefined || previousOperand == undefined) return;
+      if (currentOperandTextElement.innerHTML.lastIndexOf('.') ==
+         currentOperandTextElement.innerHTML.length - 1) return;
 
       let res = compute(previousOperand, currentOperand, operation);
 
@@ -119,7 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
       currentOperandTextElement.innerHTML = currentOperand;
    });
 
-   function compute(a, b, operation) {
+   function compute(a, b, operation,) {
       let result;
       switch (operation) {
          case "+":
@@ -134,9 +136,6 @@ document.addEventListener("DOMContentLoaded", () => {
          case "*":
             result = Number(a) * Number(b);
             break;
-         // case "%":
-         //    result = Number(a) - ((Number(a) * Number(b)) / 100);
-         //    break;
          default:
             return
       };
