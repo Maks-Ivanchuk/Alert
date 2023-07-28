@@ -36,12 +36,11 @@ document.addEventListener("DOMContentLoaded", () => {
          if (currentOperand == "0.") return;
 
          if (target.value == "-") {
-            if (currentOperand == undefined) {
-               console.log('-');
+            if (currentOperand == undefined) { //якщо знач порожгє, і клацнули "-" то робимо мінусове значення
                currentOperand = target.value;
                currentOperandTextElement.innerHTML = currentOperand;
                return;
-            } else if (currentOperand == '-') {
+            } else if (currentOperand == '-') { //якщо знач мінусовк, і клацнули "-" то робимо плюсове значення
                currentOperand = undefined;
                currentOperandTextElement.innerHTML = '';
                return;
@@ -63,8 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
          };
 
          if (target.value == "%") return;
-
-
 
          if (previousOperand == undefined) {
             previousOperand = currentOperand;
