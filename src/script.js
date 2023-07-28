@@ -34,6 +34,20 @@ document.addEventListener("DOMContentLoaded", () => {
          let target = event.target;
 
          if (currentOperand == "0.") return;
+
+         if (target.value == "-") {
+            if (currentOperand == undefined) {
+               console.log('-');
+               currentOperand = target.value;
+               currentOperandTextElement.innerHTML = currentOperand;
+               return;
+            } else if (currentOperand == '-') {
+               currentOperand = undefined;
+               currentOperandTextElement.innerHTML = '';
+               return;
+            };
+         };
+
          if (currentOperand == undefined && previousOperand == undefined) return;
          if (currentOperandTextElement.innerHTML != '' &&
             currentOperandTextElement.innerHTML.lastIndexOf('.') ==
@@ -49,6 +63,8 @@ document.addEventListener("DOMContentLoaded", () => {
          };
 
          if (target.value == "%") return;
+
+
 
          if (previousOperand == undefined) {
             previousOperand = currentOperand;
@@ -81,6 +97,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       currentOperandTextElement.innerHTML = currentOperandTextElement.innerHTML.slice(0, -1);
       currentOperand = currentOperandTextElement.innerHTML;
+      if (currentOperand == '') {
+         currentOperand = undefined;
+      }
    });
 
    allClearButton.addEventListener('click', () => {
